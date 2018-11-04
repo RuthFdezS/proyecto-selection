@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ExpedienteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EstadosCiviles">
+          <Key>
+            <PropertyRef Name="codestadocivil" />
+          </Key>
+          <Property Name="codestadocivil" Type="int" Nullable="false" />
+          <Property Name="nomestadocivil" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Expediente">
+          <Key>
+            <PropertyRef Name="identificacion" />
+          </Key>
+          <Property Name="identificacion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="edad" Type="int" Nullable="false" />
+          <Property Name="codgenero" Type="int" Nullable="false" />
+          <Property Name="codestadocivil" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Generos">
+          <Key>
+            <PropertyRef Name="codgenero" />
+          </Key>
+          <Property Name="codgenero" Type="int" Nullable="false" />
+          <Property Name="nomgenero" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Perfiles">
+          <Key>
+            <PropertyRef Name="codPerfil" />
+          </Key>
+          <Property Name="codPerfil" Type="int" Nullable="false" />
+          <Property Name="nomperfil" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="nomusuario" />
+          </Key>
+          <Property Name="nomusuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="pass" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsuariosPorPerfiles">
+          <Key>
+            <PropertyRef Name="nomusuario" />
+            <PropertyRef Name="codPerfil" />
+          </Key>
+          <Property Name="nomusuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="codPerfil" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__UsuariosP__codPe__59063A47">
+          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+          <End Role="UsuariosPorPerfiles" Type="Self.UsuariosPorPerfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="codPerfil" />
+            </Principal>
+            <Dependent Role="UsuariosPorPerfiles">
+              <PropertyRef Name="codPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsuariosP__nomus__59FA5E80">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="UsuariosPorPerfiles" Type="Self.UsuariosPorPerfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="nomusuario" />
+            </Principal>
+            <Dependent Role="UsuariosPorPerfiles">
+              <PropertyRef Name="nomusuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expediente_EstadosCiviles">
+          <End Role="EstadosCiviles" Type="Self.EstadosCiviles" Multiplicity="1" />
+          <End Role="Expediente" Type="Self.Expediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosCiviles">
+              <PropertyRef Name="codestadocivil" />
+            </Principal>
+            <Dependent Role="Expediente">
+              <PropertyRef Name="codestadocivil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expediente_Generos">
+          <End Role="Generos" Type="Self.Generos" Multiplicity="1" />
+          <End Role="Expediente" Type="Self.Expediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Generos">
+              <PropertyRef Name="codgenero" />
+            </Principal>
+            <Dependent Role="Expediente">
+              <PropertyRef Name="codgenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="pa_AgregarExpediente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="varchar" Mode="In" />
+          <Parameter Name="NOM" Type="varchar" Mode="In" />
+          <Parameter Name="APE" Type="varchar" Mode="In" />
+          <Parameter Name="EDAD" Type="int" Mode="In" />
+          <Parameter Name="GENERO" Type="int" Mode="In" />
+          <Parameter Name="ESTADOCIVIL" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_ObtenerPerfilesUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nomusuario" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_VerificarLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nomusuario" Type="varchar" Mode="In" />
+          <Parameter Name="pass" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ExpedienteModelStoreContainer">
+          <EntitySet Name="EstadosCiviles" EntityType="Self.EstadosCiviles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Expediente" EntityType="Self.Expediente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Generos" EntityType="Self.Generos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuariosPorPerfiles" EntityType="Self.UsuariosPorPerfiles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__UsuariosP__codPe__59063A47" Association="Self.FK__UsuariosP__codPe__59063A47">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="UsuariosPorPerfiles" EntitySet="UsuariosPorPerfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsuariosP__nomus__59FA5E80" Association="Self.FK__UsuariosP__nomus__59FA5E80">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="UsuariosPorPerfiles" EntitySet="UsuariosPorPerfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expediente_EstadosCiviles" Association="Self.FK_Expediente_EstadosCiviles">
+            <End Role="EstadosCiviles" EntitySet="EstadosCiviles" />
+            <End Role="Expediente" EntitySet="Expediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expediente_Generos" Association="Self.FK_Expediente_Generos">
+            <End Role="Generos" EntitySet="Generos" />
+            <End Role="Expediente" EntitySet="Expediente" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ExpedienteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EstadosCiviles">
+          <Key>
+            <PropertyRef Name="codestadocivil" />
+          </Key>
+          <Property Name="codestadocivil" Type="Int32" Nullable="false" />
+          <Property Name="nomestadocivil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Expediente" Relationship="Self.FK_Expediente_EstadosCiviles" FromRole="EstadosCiviles" ToRole="Expediente" />
+        </EntityType>
+        <EntityType Name="Expediente">
+          <Key>
+            <PropertyRef Name="identificacion" />
+          </Key>
+          <Property Name="identificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="edad" Type="Int32" Nullable="false" />
+          <Property Name="codgenero" Type="Int32" Nullable="false" />
+          <Property Name="codestadocivil" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EstadosCiviles" Relationship="Self.FK_Expediente_EstadosCiviles" FromRole="Expediente" ToRole="EstadosCiviles" />
+          <NavigationProperty Name="Generos" Relationship="Self.FK_Expediente_Generos" FromRole="Expediente" ToRole="Generos" />
+        </EntityType>
+        <EntityType Name="Generos">
+          <Key>
+            <PropertyRef Name="codgenero" />
+          </Key>
+          <Property Name="codgenero" Type="Int32" Nullable="false" />
+          <Property Name="nomgenero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Expediente" Relationship="Self.FK_Expediente_Generos" FromRole="Generos" ToRole="Expediente" />
+        </EntityType>
+        <Association Name="FK_Expediente_EstadosCiviles">
+          <End Role="EstadosCiviles" Type="Self.EstadosCiviles" Multiplicity="1" />
+          <End Role="Expediente" Type="Self.Expediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosCiviles">
+              <PropertyRef Name="codestadocivil" />
+            </Principal>
+            <Dependent Role="Expediente">
+              <PropertyRef Name="codestadocivil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expediente_Generos">
+          <End Role="Generos" Type="Self.Generos" Multiplicity="1" />
+          <End Role="Expediente" Type="Self.Expediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Generos">
+              <PropertyRef Name="codgenero" />
+            </Principal>
+            <Dependent Role="Expediente">
+              <PropertyRef Name="codgenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ExpedienteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EstadosCiviles" EntityType="Self.EstadosCiviles" />
+          <EntitySet Name="Expediente" EntityType="Self.Expediente" />
+          <EntitySet Name="Generos" EntityType="Self.Generos" />
+          <AssociationSet Name="FK_Expediente_EstadosCiviles" Association="Self.FK_Expediente_EstadosCiviles">
+            <End Role="EstadosCiviles" EntitySet="EstadosCiviles" />
+            <End Role="Expediente" EntitySet="Expediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expediente_Generos" Association="Self.FK_Expediente_Generos">
+            <End Role="Generos" EntitySet="Generos" />
+            <End Role="Expediente" EntitySet="Expediente" />
+          </AssociationSet>
+          <FunctionImport Name="pa_AgregarExpediente">
+            <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="NOM" Mode="In" Type="String" />
+            <Parameter Name="APE" Mode="In" Type="String" />
+            <Parameter Name="EDAD" Mode="In" Type="Int32" />
+            <Parameter Name="GENERO" Mode="In" Type="Int32" />
+            <Parameter Name="ESTADOCIVIL" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_ConsultarExpedientes" ReturnType="Collection(ExpedienteModel.pa_ConsultarExpedientes_Result)" />
+          <FunctionImport Name="pa_ObtenerPerfilesUsuario" ReturnType="Collection(ExpedienteModel.pa_ObtenerPerfilesUsuario_Result)">
+          <Parameter Name="nomusuario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_VerificarLogin" ReturnType="Collection(ExpedienteModel.pa_VerificarLogin_Result)">
+            <Parameter Name="nomusuario" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Perfiles" EntityType="ExpedienteModel.Perfiles" />
+          <EntitySet Name="Usuarios" EntityType="ExpedienteModel.Usuarios" />
+          <AssociationSet Name="UsuariosPorPerfiles" Association="ExpedienteModel.UsuariosPorPerfiles">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="pa_ConsultarExpedientes_Result">
+          <Property Type="String" Name="identificacion" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="apellidos" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="edad" Nullable="false" />
+          <Property Type="Int32" Name="codgenero" Nullable="false" />
+          <Property Type="String" Name="genero" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="codestadocivil" Nullable="false" />
+          <Property Type="String" Name="estadocivil" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="pa_ObtenerPerfilesUsuario_Result">
+          <Property Type="String" Name="nomusuario" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="nomperfil" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="Perfiles">
+          <Key>
+            <PropertyRef Name="codPerfil" />
+          </Key>
+          <Property Name="codPerfil" Type="Int32" Nullable="false" />
+          <Property Name="nomperfil" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="ExpedienteModel.UsuariosPorPerfiles" FromRole="Perfiles" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="nomusuario" />
+          </Key>
+          <Property Name="nomusuario" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Perfiles" Relationship="ExpedienteModel.UsuariosPorPerfiles" FromRole="Usuarios" ToRole="Perfiles" />
+        </EntityType>
+        <Association Name="UsuariosPorPerfiles">
+          <End Type="ExpedienteModel.Perfiles" Role="Perfiles" Multiplicity="*" />
+          <End Type="ExpedienteModel.Usuarios" Role="Usuarios" Multiplicity="*" />
+        </Association>
+        <ComplexType Name="pa_VerificarLogin_Result">
+          <Property Type="String" Name="nomusuario" Nullable="false" MaxLength="20" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ExpedienteModelStoreContainer" CdmEntityContainer="ExpedienteEntities">
+          <EntitySetMapping Name="EstadosCiviles">
+            <EntityTypeMapping TypeName="ExpedienteModel.EstadosCiviles">
+              <MappingFragment StoreEntitySet="EstadosCiviles">
+                <ScalarProperty Name="codestadocivil" ColumnName="codestadocivil" />
+                <ScalarProperty Name="nomestadocivil" ColumnName="nomestadocivil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expediente">
+            <EntityTypeMapping TypeName="ExpedienteModel.Expediente">
+              <MappingFragment StoreEntitySet="Expediente">
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="codgenero" ColumnName="codgenero" />
+                <ScalarProperty Name="codestadocivil" ColumnName="codestadocivil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Generos">
+            <EntityTypeMapping TypeName="ExpedienteModel.Generos">
+              <MappingFragment StoreEntitySet="Generos">
+                <ScalarProperty Name="codgenero" ColumnName="codgenero" />
+                <ScalarProperty Name="nomgenero" ColumnName="nomgenero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="pa_AgregarExpediente" FunctionName="ExpedienteModel.Store.pa_AgregarExpediente" />
+          <FunctionImportMapping FunctionImportName="pa_ObtenerPerfilesUsuario" FunctionName="ExpedienteModel.Store.pa_ObtenerPerfilesUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExpedienteModel.pa_ObtenerPerfilesUsuario_Result">
+                <ScalarProperty Name="nomusuario" ColumnName="nomusuario" />
+                <ScalarProperty Name="nomperfil" ColumnName="nomperfil" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_VerificarLogin" FunctionName="ExpedienteModel.Store.pa_VerificarLogin" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExpedienteModel.pa_VerificarLogin_Result">
+                <ScalarProperty Name="nomusuario" ColumnName="nomusuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Perfiles">
+            <EntityTypeMapping TypeName="ExpedienteModel.Perfiles">
+              <MappingFragment StoreEntitySet="Perfiles">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="nomperfil" ColumnName="nomperfil" />
+                <ScalarProperty Name="codPerfil" ColumnName="codPerfil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="ExpedienteModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="nomusuario" ColumnName="nomusuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UsuariosPorPerfiles" TypeName="ExpedienteModel.UsuariosPorPerfiles" StoreEntitySet="UsuariosPorPerfiles">
+            <EndProperty Name="Usuarios">
+              <ScalarProperty Name="nomusuario" ColumnName="nomusuario" />
+            </EndProperty>
+            <EndProperty Name="Perfiles">
+              <ScalarProperty Name="codPerfil" ColumnName="codPerfil" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
