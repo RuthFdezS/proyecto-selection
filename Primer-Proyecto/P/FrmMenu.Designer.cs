@@ -34,12 +34,13 @@
             this.mantenimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.perfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.procesosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expedientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_usuario = new System.Windows.Forms.ToolStripStatusLabel();
+            this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.candidatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -49,8 +50,8 @@
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.mantenimientoToolStripMenuItem,
-            this.procesosToolStripMenuItem,
-            this.consultasToolStripMenuItem});
+            this.estadisticasToolStripMenuItem,
+            this.candidatosToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(673, 24);
@@ -61,7 +62,8 @@
             // archivoToolStripMenuItem
             // 
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cerrarSistemaToolStripMenuItem});
+            this.cerrarSistemaToolStripMenuItem,
+            this.cerrarToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
@@ -85,34 +87,29 @@
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             // 
             // perfilesToolStripMenuItem
             // 
             this.perfilesToolStripMenuItem.Name = "perfilesToolStripMenuItem";
-            this.perfilesToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.perfilesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.perfilesToolStripMenuItem.Text = "Perfiles";
             // 
-            // procesosToolStripMenuItem
+            // estadisticasToolStripMenuItem
             // 
-            this.procesosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.estadisticasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.expedientesToolStripMenuItem});
-            this.procesosToolStripMenuItem.Name = "procesosToolStripMenuItem";
-            this.procesosToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.procesosToolStripMenuItem.Text = "Procesos";
+            this.estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
+            this.estadisticasToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.estadisticasToolStripMenuItem.Text = "Estadísticas";
+            this.estadisticasToolStripMenuItem.Click += new System.EventHandler(this.estadisticasToolStripMenuItem_Click);
             // 
             // expedientesToolStripMenuItem
             // 
             this.expedientesToolStripMenuItem.Name = "expedientesToolStripMenuItem";
-            this.expedientesToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.expedientesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.expedientesToolStripMenuItem.Text = "Expedientes";
-            // 
-            // consultasToolStripMenuItem
-            // 
-            this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
-            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.consultasToolStripMenuItem.Text = "Consultas";
             // 
             // statusStrip1
             // 
@@ -137,6 +134,19 @@
             this.tssl_usuario.Name = "tssl_usuario";
             this.tssl_usuario.Size = new System.Drawing.Size(72, 17);
             this.tssl_usuario.Text = "(sin usuario)";
+            // 
+            // cerrarToolStripMenuItem
+            // 
+            this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cerrarToolStripMenuItem.Text = "Cerrar sesion";
+            this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
+            // 
+            // candidatosToolStripMenuItem
+            // 
+            this.candidatosToolStripMenuItem.Name = "candidatosToolStripMenuItem";
+            this.candidatosToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.candidatosToolStripMenuItem.Text = "Candidatos";
             // 
             // FrmMenu
             // 
@@ -167,11 +177,12 @@
         private System.Windows.Forms.ToolStripMenuItem mantenimientoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem perfilesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem procesosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estadisticasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem expedientesToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripMenuItem consultasToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel tssl_usuario;
+        private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem candidatosToolStripMenuItem;
     }
 }

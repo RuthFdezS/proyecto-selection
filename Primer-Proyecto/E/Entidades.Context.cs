@@ -16,10 +16,10 @@ namespace E
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class ExpedienteEntities : DbContext
+    public partial class SeleccionBDEntities : DbContext
     {
-        public ExpedienteEntities()
-            : base("name=ExpedienteEntities")
+        public SeleccionBDEntities()
+            : base("name=SeleccionBDEntities")
         {
         }
     
@@ -28,66 +28,29 @@ namespace E
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<EstadosCiviles> EstadosCiviles { get; set; }
-        public DbSet<Expediente> Expediente { get; set; }
-        public DbSet<Generos> Generos { get; set; }
         public DbSet<Perfiles> Perfiles { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
     
-        public virtual int pa_AgregarExpediente(string iD, string nOM, string aPE, Nullable<int> eDAD, Nullable<int> gENERO, Nullable<int> eSTADOCIVIL)
+        public virtual ObjectResult<pa_ObtenerPerfilesUsuario_Result> pa_ObtenerPerfilesUsuario(string nicknameUsuario)
         {
-            var iDParameter = iD != null ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(string));
+            var nicknameUsuarioParameter = nicknameUsuario != null ?
+                new ObjectParameter("nicknameUsuario", nicknameUsuario) :
+                new ObjectParameter("nicknameUsuario", typeof(string));
     
-            var nOMParameter = nOM != null ?
-                new ObjectParameter("NOM", nOM) :
-                new ObjectParameter("NOM", typeof(string));
-    
-            var aPEParameter = aPE != null ?
-                new ObjectParameter("APE", aPE) :
-                new ObjectParameter("APE", typeof(string));
-    
-            var eDADParameter = eDAD.HasValue ?
-                new ObjectParameter("EDAD", eDAD) :
-                new ObjectParameter("EDAD", typeof(int));
-    
-            var gENEROParameter = gENERO.HasValue ?
-                new ObjectParameter("GENERO", gENERO) :
-                new ObjectParameter("GENERO", typeof(int));
-    
-            var eSTADOCIVILParameter = eSTADOCIVIL.HasValue ?
-                new ObjectParameter("ESTADOCIVIL", eSTADOCIVIL) :
-                new ObjectParameter("ESTADOCIVIL", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("pa_AgregarExpediente", iDParameter, nOMParameter, aPEParameter, eDADParameter, gENEROParameter, eSTADOCIVILParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_ObtenerPerfilesUsuario_Result>("pa_ObtenerPerfilesUsuario", nicknameUsuarioParameter);
         }
     
-        public virtual ObjectResult<pa_ConsultarExpedientes_Result> pa_ConsultarExpedientes()
+        public virtual ObjectResult<pa_VerificarLogin_Result> pa_VerificarLogin(string nicknameUsuario, string pass)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_ConsultarExpedientes_Result>("pa_ConsultarExpedientes");
-        }
-    
-        public virtual ObjectResult<pa_ObtenerPerfilesUsuario_Result> pa_ObtenerPerfilesUsuario(string nomusuario)
-        {
-            var nomusuarioParameter = nomusuario != null ?
-                new ObjectParameter("nomusuario", nomusuario) :
-                new ObjectParameter("nomusuario", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_ObtenerPerfilesUsuario_Result>("pa_ObtenerPerfilesUsuario", nomusuarioParameter);
-        }
-    
-        public virtual ObjectResult<pa_VerificarLogin_Result> pa_VerificarLogin(string nomusuario, string pass)
-        {
-            var nomusuarioParameter = nomusuario != null ?
-                new ObjectParameter("nomusuario", nomusuario) :
-                new ObjectParameter("nomusuario", typeof(string));
+            var nicknameUsuarioParameter = nicknameUsuario != null ?
+                new ObjectParameter("nicknameUsuario", nicknameUsuario) :
+                new ObjectParameter("nicknameUsuario", typeof(string));
     
             var passParameter = pass != null ?
                 new ObjectParameter("pass", pass) :
                 new ObjectParameter("pass", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_VerificarLogin_Result>("pa_VerificarLogin", nomusuarioParameter, passParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_VerificarLogin_Result>("pa_VerificarLogin", nicknameUsuarioParameter, passParameter);
         }
     }
 }

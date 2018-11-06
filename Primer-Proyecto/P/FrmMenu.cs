@@ -15,15 +15,23 @@ namespace P
     public partial class FrmMenu : Form
     {
         private string atbnomusuario;
+        private FrmLogin formLogin;
 
         public string ATBNOMUSUARIO
         {
             set { this.atbnomusuario = value; }
             get { return this.atbnomusuario; }
         }
-        
-        public FrmMenu()
+
+        public FrmLogin FORMLOGIN
         {
+            set { this.formLogin = value; }
+            get { return this.formLogin; }
+        }
+        
+        public FrmMenu(FrmLogin p_formLogin)
+        {
+            this.formLogin = p_formLogin;
             InitializeComponent();
         }
 
@@ -35,8 +43,8 @@ namespace P
 
                 //Aqui deshabilito opciones del menu 
                 mantenimientoToolStripMenuItem.Visible = false;
-                consultasToolStripMenuItem.Visible = false;
-                procesosToolStripMenuItem.Visible = false;
+                candidatosToolStripMenuItem.Visible = false;
+                estadisticasToolStripMenuItem.Visible = false;
 
                 //Cargo perfiles del usuario
                 Usuarios u = new Usuarios();
@@ -52,8 +60,13 @@ namespace P
                         switch(item.nomperfil.ToUpper())
                         {
                             case "MANTENIMIENTO": { this.mantenimientoToolStripMenuItem.Visible = true; } break;
-                            case "CONSULTA": { this.consultasToolStripMenuItem.Visible = true; } break;
-                            case "PROCESOS": { this.procesosToolStripMenuItem.Visible = true; } break;
+                            case "ESTADÍSTICO": { this.estadisticasToolStripMenuItem.Visible = true; } break;
+                            case "CANDIDATOS": { this.candidatosToolStripMenuItem.Visible = true; } break;
+                            case "ADMINISTRADOR": {
+                                    this.mantenimientoToolStripMenuItem.Visible = true;
+                                    this.candidatosToolStripMenuItem.Visible = true;
+                                    this.estadisticasToolStripMenuItem.Visible = true;
+                                } break;
                         }
                     }
                 }
@@ -77,7 +90,18 @@ namespace P
 
         private void cerrarSistemaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit(); 
+            Application.Exit();
+        }
+
+        private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.formLogin.Show();
+            this.Hide();
+        }
+
+        private void estadisticasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

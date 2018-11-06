@@ -11,10 +11,9 @@ namespace E
 {
     using System;
     
-    [Serializable]
     public partial class pa_ObtenerPerfilesUsuario_Result
     {
-        public string nomusuario { get; set; }
+        public string nicknameUsuario { get; set; }
         public string nomperfil { get; set; }
     }
 }

@@ -4,15 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="151b7d798a34425788c3b77d10070335" Name="Diagram1">
-        <EntityTypeShape EntityType="ExpedienteModel.EstadosCiviles" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ExpedienteModel.Expediente" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ExpedienteModel.Generos" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <AssociationConnector Association="ExpedienteModel.FK_Expediente_EstadosCiviles" ManuallyRouted="false" />
-        <AssociationConnector Association="ExpedienteModel.FK_Expediente_Generos" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ExpedienteModel.Perfiles" Width="1.5" PointX="3.375" PointY="4.875" />
-        <EntityTypeShape EntityType="ExpedienteModel.Usuarios" Width="1.5" PointX="5.625" PointY="4.875" />
-        <AssociationConnector Association="ExpedienteModel.UsuariosPorPerfiles" />
+      <Diagram DiagramId="598f1e921c1d498f955657fe56a72859" Name="Diagram1">
+        <EntityTypeShape EntityType="SeleccionBDModel.Perfiles" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeleccionBDModel.Usuarios" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="SeleccionBDModel.UsuariosPorPerfiles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
