@@ -15,7 +15,7 @@ namespace P
     public partial class FrmMenu : Form
     {
         private string atbnomusuario;
-        private FrmLogin formLogin;
+        private FrmLogin formLogin; //atributo para poder acceder al menu de Login
 
         public string ATBNOMUSUARIO
         {
@@ -95,7 +95,7 @@ namespace P
 
         private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.formLogin.Show();
+            this.formLogin.Show(); // Se manda a llamar el menu de Login y se muestra
             this.Hide();
         }
 
