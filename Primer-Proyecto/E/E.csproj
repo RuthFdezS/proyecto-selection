@@ -63,18 +63,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Entidades.edmx</DependentUpon>
     </Compile>
-    <Compile Include="EstadosCiviles.cs">
-      <DependentUpon>Entidades.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Expediente.cs">
-      <DependentUpon>Entidades.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generos.cs">
-      <DependentUpon>Entidades.tt</DependentUpon>
-    </Compile>
-    <Compile Include="pa_ConsultarExpedientes_Result.cs">
-      <DependentUpon>Entidades.tt</DependentUpon>
-    </Compile>
     <Compile Include="pa_ObtenerPerfilesUsuario_Result.cs">
       <DependentUpon>Entidades.tt</DependentUpon>
     </Compile>
@@ -96,13 +84,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="Entidades.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Entidades.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="Entidades.edmx.diagram">
       <DependentUpon>Entidades.edmx</DependentUpon>
     </None>
@@ -111,6 +97,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entidades.Context.tt">
@@ -123,9 +112,6 @@
       <DependentUpon>Entidades.edmx</DependentUpon>
       <LastGenOutput>Entidades.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

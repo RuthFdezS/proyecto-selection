@@ -11,9 +11,8 @@ namespace E
 {
     using System;
     
-    [Serializable]
     public partial class pa_VerificarLogin_Result
     {
-        public string nomusuario { get; set; }
+        public string nicknameUsuario { get; set; }
     }
 }

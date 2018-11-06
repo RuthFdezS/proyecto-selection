@@ -12,7 +12,6 @@ namespace E
     using System;
     using System.Collections.Generic;
     
-    [Serializable]
     public partial class Usuarios
     {
         public Usuarios()
@@ -20,6 +19,7 @@ namespace E
             this.Perfiles = new HashSet<Perfiles>();
         }
     
+        public string nicknameUsuario { get; set; }
         public string nomusuario { get; set; }
         public string pass { get; set; }
         public bool activo { get; set; }

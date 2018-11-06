@@ -12,7 +12,6 @@ namespace E
     using System;
     using System.Collections.Generic;
     
-    [Serializable]
     public partial class Perfiles
     {
         public Perfiles()
