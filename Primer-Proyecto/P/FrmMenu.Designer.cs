@@ -41,6 +41,7 @@
             this.tssl_usuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.candidatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.expedienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -109,7 +110,9 @@
             // 
             this.expedientesToolStripMenuItem.Name = "expedientesToolStripMenuItem";
             this.expedientesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.expedientesToolStripMenuItem.Text = "Expedientes";
+            this.expedientesToolStripMenuItem.Text = "Reportes";
+            this.expedientesToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.expedientesToolStripMenuItem.Click += new System.EventHandler(this.expedientesToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -144,9 +147,17 @@
             // 
             // candidatosToolStripMenuItem
             // 
+            this.candidatosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.expedienteToolStripMenuItem});
             this.candidatosToolStripMenuItem.Name = "candidatosToolStripMenuItem";
             this.candidatosToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.candidatosToolStripMenuItem.Text = "Candidatos";
+            // 
+            // expedienteToolStripMenuItem
+            // 
+            this.expedienteToolStripMenuItem.Name = "expedienteToolStripMenuItem";
+            this.expedienteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.expedienteToolStripMenuItem.Text = "Expediente";
             // 
             // FrmMenu
             // 
@@ -184,5 +195,6 @@
         private System.Windows.Forms.ToolStripStatusLabel tssl_usuario;
         private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem candidatosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem expedienteToolStripMenuItem;
     }
 }
