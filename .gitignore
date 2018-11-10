@@ -240,3 +240,8 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+# Ingnorar los Config
+.config
+.settings
+.Config
