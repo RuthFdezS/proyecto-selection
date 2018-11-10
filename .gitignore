@@ -242,6 +242,7 @@ ModelManifest.xml
 .fake/
 
 # Ingnorar los Config del projecto
-app.config
-Settings.settings
-App.Config
+*.config
+*.settings
+*.Config
+AD/**/*.config
