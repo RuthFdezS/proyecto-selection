@@ -241,7 +241,7 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 
-# Ingnorar los Config
-.config
-.settings
-.Config
+# Ingnorar los Config del projecto
+app.config
+Settings.settings
+App.Config
