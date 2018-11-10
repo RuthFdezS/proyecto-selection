@@ -130,12 +130,12 @@ namespace LN
             ArrayList lstparametros = new ArrayList();
             try
             {
-                sentencia.SENTENCIASQL = @"EXEC pa_ObtenerPerfilesUsuario @nomusuario";
+                sentencia.SENTENCIASQL = @"EXEC pa_ObtenerPerfilesUsuario @nicknameUsuario";
 
                 SqlParameter paramNomusuario = new SqlParameter();
-                paramNomusuario.ParameterName = "@nomusuario";
+                paramNomusuario.ParameterName = "@nicknameUsuario";
                 paramNomusuario.SqlDbType = System.Data.SqlDbType.VarChar;
-                paramNomusuario.Value = usuarios.nomusuario;
+                paramNomusuario.Value = usuarios.nicknameUsuario;
 
                 lstparametros.Add(paramNomusuario);
                 sentencia.LSTPARAMETROS = lstparametros;
@@ -180,5 +180,32 @@ namespace LN
                 throw ex;
             }
         }
+
+        public static List<pa_ObtenerNombreUsuario_Result> ObtenerNombrePorUsuario(Usuarios usuarios)
+        {
+            SQLSentencia sentencia = new SQLSentencia();
+            ArrayList lstparametros = new ArrayList();
+            try
+            {
+                sentencia.SENTENCIASQL = @"EXEC pa_ObtenerNombreUsuario @nicknameUsuario";
+
+                SqlParameter paramNomusuario = new SqlParameter();
+                paramNomusuario.ParameterName = "@nicknameUsuario";
+                paramNomusuario.SqlDbType = System.Data.SqlDbType.VarChar;
+                paramNomusuario.Value = usuarios.nicknameUsuario;
+
+                lstparametros.Add(paramNomusuario);
+                sentencia.LSTPARAMETROS = lstparametros;
+
+                AccesoDatos objacceso = new AccesoDatos();
+                return objacceso.Consultar_ObtenerNombrePorUsuario(sentencia);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+       
     }
 }

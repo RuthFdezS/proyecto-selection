@@ -54,6 +54,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="pa_ModificarPermisosPerfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nicknameUsuario" Type="varchar" Mode="In" />
+          <Parameter Name="codPerfil" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_ObtenerNombreUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nicknameUsuario" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="pa_ObtenerPerfilesUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nicknameUsuario" Type="varchar" Mode="In" />
         </Function>
@@ -115,6 +122,13 @@
             <Parameter Name="nicknameUsuario" Mode="In" Type="String" />
             <Parameter Name="pass" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="pa_ObtenerNombreUsuario" ReturnType="Collection(SeleccionBDModel.pa_ObtenerNombreUsuario_Result)">
+          <Parameter Name="nicknameUsuario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_ModificarPermisosPerfil" ReturnType="Collection(SeleccionBDModel.pa_ModificarPermisosPerfil_Result)">
+            <Parameter Name="nicknameUsuario" Mode="In" Type="String" />
+            <Parameter Name="codPerfil" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="pa_ObtenerPerfilesUsuario_Result">
           <Property Type="String" Name="nicknameUsuario" Nullable="false" MaxLength="20" />
@@ -123,6 +137,10 @@
         <ComplexType Name="pa_VerificarLogin_Result">
           <Property Type="String" Name="nicknameUsuario" Nullable="false" MaxLength="20" />
         </ComplexType>
+        <ComplexType Name="pa_ObtenerNombreUsuario_Result">
+          <Property Type="String" Name="nomusuario" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="pa_ModificarPermisosPerfil_Result" />
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -169,6 +187,18 @@
               <ComplexTypeMapping TypeName="SeleccionBDModel.pa_VerificarLogin_Result">
                 <ScalarProperty Name="nicknameUsuario" ColumnName="nicknameUsuario" />
               </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_ObtenerNombreUsuario" FunctionName="SeleccionBDModel.Store.pa_ObtenerNombreUsuario" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SeleccionBDModel.pa_ObtenerNombreUsuario_Result">
+                <ScalarProperty Name="nomusuario" ColumnName="nomusuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_ModificarPermisosPerfil" FunctionName="SeleccionBDModel.Store.pa_ModificarPermisosPerfil" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SeleccionBDModel.pa_ModificarPermisosPerfil_Result" />
             </ResultMapping>
           </FunctionImportMapping>
         </EntityContainerMapping>
