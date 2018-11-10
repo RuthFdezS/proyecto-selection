@@ -191,7 +191,7 @@ namespace P
         {
             try
             {
-                MessageBox.Show("Perfil modificado");
+                MessageBox.Show("El perfil ha sido modificado");
                 Usuarios usuario = new Usuarios();
 
                 usuario.nicknameUsuario = txt_nickNameUsuario.Text.Trim();
