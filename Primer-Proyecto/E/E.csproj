@@ -63,6 +63,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Entidades.edmx</DependentUpon>
     </Compile>
+    <Compile Include="pa_ModificarPermisosPerfil_Result.cs">
+      <DependentUpon>Entidades.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pa_ObtenerNombreUsuario_Result.cs">
+      <DependentUpon>Entidades.tt</DependentUpon>
+    </Compile>
     <Compile Include="pa_ObtenerPerfilesUsuario_Result.cs">
       <DependentUpon>Entidades.tt</DependentUpon>
     </Compile>

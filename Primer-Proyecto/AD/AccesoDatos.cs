@@ -221,7 +221,7 @@ namespace AD
                 foreach (DataRow item in dt.Rows)
                 {
                     pa_VerificarLogin_Result g = new pa_VerificarLogin_Result();
-
+                    
                     g.nicknameUsuario = item.ItemArray[0].ToString();
                     
                     lstresultados.Add(g);
@@ -279,5 +279,46 @@ namespace AD
 
             return lstresultados;
         }
+
+        public List<pa_ObtenerNombreUsuario_Result> Consultar_ObtenerNombrePorUsuario(SQLSentencia psentencia)
+        {
+            List<pa_ObtenerNombreUsuario_Result> lstresultados = new List<pa_ObtenerNombreUsuario_Result>();
+            DataTable dt = new DataTable();
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection = objconexion;
+                cmd.CommandText = psentencia.SENTENCIASQL;
+
+                if (psentencia.LSTPARAMETROS != null)
+                    if (psentencia.LSTPARAMETROS.Count > 0)
+                        cmd.Parameters.AddRange(psentencia.LSTPARAMETROS.ToArray());
+
+                SqlDataAdapter objconsulta = new SqlDataAdapter(cmd);
+                objconsulta.Fill(dt);
+
+                foreach (DataRow item in dt.Rows)
+                {
+                    pa_ObtenerNombreUsuario_Result g = new pa_ObtenerNombreUsuario_Result();
+
+                    g.nomusuario = item.ItemArray[0].ToString();
+                    lstresultados.Add(g);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.CERRAR();
+            }
+
+            return lstresultados;
+        }
+
     }
 }
+

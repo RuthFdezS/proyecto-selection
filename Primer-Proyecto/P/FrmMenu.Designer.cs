@@ -31,17 +31,17 @@
             this.menu = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.perfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expedientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.candidatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.expedienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_usuario = new System.Windows.Forms.ToolStripStatusLabel();
-            this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.candidatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.expedienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +75,13 @@
             this.cerrarSistemaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cerrarSistemaToolStripMenuItem.Text = "Cerrar sistema";
             this.cerrarSistemaToolStripMenuItem.Click += new System.EventHandler(this.cerrarSistemaToolStripMenuItem_Click);
+            // 
+            // cerrarToolStripMenuItem
+            // 
+            this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cerrarToolStripMenuItem.Text = "Cerrar sesion";
+            this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
             // 
             // mantenimientoToolStripMenuItem
             // 
@@ -114,6 +121,20 @@
             this.expedientesToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.expedientesToolStripMenuItem.Click += new System.EventHandler(this.expedientesToolStripMenuItem_Click);
             // 
+            // candidatosToolStripMenuItem
+            // 
+            this.candidatosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.expedienteToolStripMenuItem});
+            this.candidatosToolStripMenuItem.Name = "candidatosToolStripMenuItem";
+            this.candidatosToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.candidatosToolStripMenuItem.Text = "Candidatos";
+            // 
+            // expedienteToolStripMenuItem
+            // 
+            this.expedienteToolStripMenuItem.Name = "expedienteToolStripMenuItem";
+            this.expedienteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.expedienteToolStripMenuItem.Text = "Expediente";
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -138,27 +159,6 @@
             this.tssl_usuario.Size = new System.Drawing.Size(72, 17);
             this.tssl_usuario.Text = "(sin usuario)";
             // 
-            // cerrarToolStripMenuItem
-            // 
-            this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
-            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.cerrarToolStripMenuItem.Text = "Cerrar sesion";
-            this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
-            // 
-            // candidatosToolStripMenuItem
-            // 
-            this.candidatosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.expedienteToolStripMenuItem});
-            this.candidatosToolStripMenuItem.Name = "candidatosToolStripMenuItem";
-            this.candidatosToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
-            this.candidatosToolStripMenuItem.Text = "Candidatos";
-            // 
-            // expedienteToolStripMenuItem
-            // 
-            this.expedienteToolStripMenuItem.Name = "expedienteToolStripMenuItem";
-            this.expedienteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.expedienteToolStripMenuItem.Text = "Expediente";
-            // 
             // FrmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -171,6 +171,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmMenu_Load);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.statusStrip1.ResumeLayout(false);

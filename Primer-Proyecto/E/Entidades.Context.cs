@@ -52,5 +52,27 @@ namespace E
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_VerificarLogin_Result>("pa_VerificarLogin", nicknameUsuarioParameter, passParameter);
         }
+    
+        public virtual ObjectResult<pa_ObtenerNombreUsuario_Result> pa_ObtenerNombreUsuario(string nicknameUsuario)
+        {
+            var nicknameUsuarioParameter = nicknameUsuario != null ?
+                new ObjectParameter("nicknameUsuario", nicknameUsuario) :
+                new ObjectParameter("nicknameUsuario", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_ObtenerNombreUsuario_Result>("pa_ObtenerNombreUsuario", nicknameUsuarioParameter);
+        }
+    
+        public virtual ObjectResult<pa_ModificarPermisosPerfil_Result> pa_ModificarPermisosPerfil(string nicknameUsuario, Nullable<int> codPerfil)
+        {
+            var nicknameUsuarioParameter = nicknameUsuario != null ?
+                new ObjectParameter("nicknameUsuario", nicknameUsuario) :
+                new ObjectParameter("nicknameUsuario", typeof(string));
+    
+            var codPerfilParameter = codPerfil.HasValue ?
+                new ObjectParameter("codPerfil", codPerfil) :
+                new ObjectParameter("codPerfil", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_ModificarPermisosPerfil_Result>("pa_ModificarPermisosPerfil", nicknameUsuarioParameter, codPerfilParameter);
+        }
     }
 }

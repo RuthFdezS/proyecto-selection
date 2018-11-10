@@ -32,9 +32,10 @@ namespace P
 
                 if (lstresultados.Count > 0) //SI trae resultados consulta es valida
                 {
-                    FrmMenu frm = new FrmMenu(this); //Instancia al formulario por abrir
+                    FormAplicacion frm = new FormAplicacion(this);
+                    //FrmMenu frm = new FrmMenu(this); //Instancia al formulario por abrir
 
-                    frm.ATBNOMUSUARIO = txtUsuario.Text.Trim();
+                    frm.ATBNICKNAMEUSURIO = txtUsuario.Text.Trim();
                     frm.CargarMenu();
 
                     frm.Show();
