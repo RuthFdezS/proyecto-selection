@@ -126,6 +126,9 @@ namespace LN
 
         public static List<pa_ObtenerPerfilesUsuario_Result> ObtenerPerfilesPorUsuario(Usuarios usuarios)
         {
+
+
+
             SQLSentencia sentencia = new SQLSentencia();
             ArrayList lstparametros = new ArrayList();
             try
