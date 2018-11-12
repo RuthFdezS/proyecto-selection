@@ -12,18 +12,17 @@ namespace E
     using System;
     using System.Collections.Generic;
     
-    public partial class Usuarios
+    public partial class PuestoPorExpediente
     {
-        public Usuarios()
-        {
-            this.Perfiles = new HashSet<Perfiles>();
-        }
+        public int codpuesto { get; set; }
+        public string identificacion { get; set; }
+        public string titulo { get; set; }
+        public string certificacion { get; set; }
+        public string idioma { get; set; }
+        public string aproboprueba { get; set; }
+        public int promedioprueba { get; set; }
     
-        public string nicknameUsuario { get; set; }
-        public string nomusuario { get; set; }
-        public string pass { get; set; }
-        public bool activo { get; set; }
-    
-        public virtual ICollection<Perfiles> Perfiles { get; set; }
+        public virtual Expediente Expediente { get; set; }
+        public virtual Puesto Puesto { get; set; }
     }
 }
