@@ -93,8 +93,20 @@
     <Compile Include="PuestoPorExpediente.cs">
       <DependentUpon>Expediente.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Expediente.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>Expediente.tt</DependentUpon>
+    </Compile>
     <Compile Include="SQLSentencia.cs" />
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Expediente.tt</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios.cs">
+      <DependentUpon>Expediente.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsuariosPorPerfiles.cs">
       <DependentUpon>Expediente.tt</DependentUpon>
     </Compile>
   </ItemGroup>

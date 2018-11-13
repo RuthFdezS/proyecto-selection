@@ -10,10 +10,14 @@
 namespace E
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class pa_ObtenerPerfilesUsuario_Result
+    public partial class sysdiagrams
     {
-        public string nicknameUsuario { get; set; }
-        public string nomperfil { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

@@ -124,11 +124,46 @@ namespace LN
         //    }
         //}
 
+        #region METODOS DEL MODULO SEGURIDAD
+        public static int Modificar_PermisosPerfil(UsuariosPorPerfiles user_p)
+        {
+            try
+            {
+                SQLSentencia sentencia = new SQLSentencia();
+                ArrayList lstparametros = new ArrayList();
+
+                sentencia.SENTENCIASQL = "EXEC pa_ModificarPermisosPerfil @NICKNAMEUSUARIO, @CODPERFIL";
+
+                SqlParameter paramNICKNAME = new SqlParameter();
+                paramNICKNAME.Value = user_p.nicknameUsuario;
+                paramNICKNAME.SqlDbType = System.Data.SqlDbType.VarChar;
+                paramNICKNAME.ParameterName = "@NICKNAMEUSUARIO";
+
+                SqlParameter paramCODPERFIL = new SqlParameter();
+                paramCODPERFIL.Value = user_p.codPerfil;
+                paramCODPERFIL.SqlDbType = System.Data.SqlDbType.Int;
+                paramCODPERFIL.ParameterName = "@CODPERFIL";
+
+                //Lista de parametros
+                lstparametros.Add(paramNICKNAME);
+                lstparametros.Add(paramCODPERFIL);
+
+                sentencia.LSTPARAMETROS = lstparametros;
+
+                AccesoDatos objacceso = new AccesoDatos();
+                return objacceso.Ejecutar(sentencia);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        #endregion
+
         public static List<pa_ObtenerPerfilesUsuario_Result> ObtenerPerfilesPorUsuario(Usuarios usuarios)
         {
-
-
-
+            
             SQLSentencia sentencia = new SQLSentencia();
             ArrayList lstparametros = new ArrayList();
             try
@@ -159,7 +194,7 @@ namespace LN
             try
             {
                 sentencia.SENTENCIASQL = @"EXEC pa_VerificarLogin @nicknameUsuario, @pass";
-
+               
                 SqlParameter paramNomusuario = new SqlParameter();
                 paramNomusuario.ParameterName = "@nicknameUsuario";
                 paramNomusuario.SqlDbType = System.Data.SqlDbType.VarChar;

@@ -40,10 +40,6 @@
             this.btn_Admin = new System.Windows.Forms.RadioButton();
             this.TabSistemaSeleccion = new System.Windows.Forms.TabControl();
             this.tabAdmin = new System.Windows.Forms.TabPage();
-            this.cbox_Perfiles = new System.Windows.Forms.ComboBox();
-            this.perfilesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.seleccionBDDataSet = new P.SeleccionBDDataSet();
-            this.txt_nickNameUsuario = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,20 +51,22 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.tabCandidato = new System.Windows.Forms.TabPage();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.perfilesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_usuario = new System.Windows.Forms.ToolStripStatusLabel();
-            this.perfilesTableAdapter = new P.SeleccionBDDataSetTableAdapters.PerfilesTableAdapter();
             this.perfilesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.cb_Perfil = new System.Windows.Forms.ComboBox();
+            this.cb_Usuario = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.menuSuperio.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.TabSistemaSeleccion.SuspendLayout();
             this.tabAdmin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.perfilesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seleccionBDDataSet)).BeginInit();
             this.tabMantenimiento.SuspendLayout();
             this.tabEstadistica.SuspendLayout();
             this.tabCandidato.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.perfilesBindingSource)).BeginInit();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.perfilesBindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -211,8 +209,9 @@
             // 
             // tabAdmin
             // 
-            this.tabAdmin.Controls.Add(this.cbox_Perfiles);
-            this.tabAdmin.Controls.Add(this.txt_nickNameUsuario);
+            this.tabAdmin.Controls.Add(this.comboBox1);
+            this.tabAdmin.Controls.Add(this.cb_Usuario);
+            this.tabAdmin.Controls.Add(this.cb_Perfil);
             this.tabAdmin.Controls.Add(this.label3);
             this.tabAdmin.Controls.Add(this.label2);
             this.tabAdmin.Controls.Add(this.label1);
@@ -224,34 +223,6 @@
             this.tabAdmin.TabIndex = 0;
             this.tabAdmin.Text = "Administrador";
             this.tabAdmin.UseVisualStyleBackColor = true;
-            // 
-            // cbox_Perfiles
-            // 
-            this.cbox_Perfiles.DataSource = this.perfilesBindingSource;
-            this.cbox_Perfiles.DisplayMember = "nomperfil";
-            this.cbox_Perfiles.FormattingEnabled = true;
-            this.cbox_Perfiles.Location = new System.Drawing.Point(332, 138);
-            this.cbox_Perfiles.Name = "cbox_Perfiles";
-            this.cbox_Perfiles.Size = new System.Drawing.Size(121, 21);
-            this.cbox_Perfiles.TabIndex = 5;
-            this.cbox_Perfiles.ValueMember = "codPerfil";
-            // 
-            // perfilesBindingSource
-            // 
-            this.perfilesBindingSource.DataMember = "Perfiles";
-            this.perfilesBindingSource.DataSource = this.seleccionBDDataSet;
-            // 
-            // seleccionBDDataSet
-            // 
-            this.seleccionBDDataSet.DataSetName = "SeleccionBDDataSet";
-            this.seleccionBDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // txt_nickNameUsuario
-            // 
-            this.txt_nickNameUsuario.Location = new System.Drawing.Point(332, 100);
-            this.txt_nickNameUsuario.Name = "txt_nickNameUsuario";
-            this.txt_nickNameUsuario.Size = new System.Drawing.Size(218, 20);
-            this.txt_nickNameUsuario.TabIndex = 4;
             // 
             // label3
             // 
@@ -267,9 +238,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(214, 100);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 13);
+            this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Nick Name Usuario";
+            this.label2.Text = "Usuario";
             // 
             // label1
             // 
@@ -365,6 +336,10 @@
             this.radioButton1.Text = "radioButton1";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
+            // perfilesBindingSource
+            // 
+            this.perfilesBindingSource.DataMember = "Perfiles";
+            // 
             // statusStrip1
             // 
             this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
@@ -390,14 +365,47 @@
             this.tssl_usuario.Size = new System.Drawing.Size(72, 17);
             this.tssl_usuario.Text = "(sin usuario)";
             // 
-            // perfilesTableAdapter
-            // 
-            this.perfilesTableAdapter.ClearBeforeFill = true;
-            // 
             // perfilesBindingSource1
             // 
             this.perfilesBindingSource1.DataMember = "Perfiles";
-            this.perfilesBindingSource1.DataSource = this.seleccionBDDataSet;
+            // 
+            // cb_Perfil
+            // 
+            this.cb_Perfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_Perfil.FormattingEnabled = true;
+            this.cb_Perfil.Items.AddRange(new object[] {
+            "Administrador",
+            "Mantenimiento",
+            "Estadístico",
+            "Candidatos"});
+            this.cb_Perfil.Location = new System.Drawing.Point(332, 130);
+            this.cb_Perfil.Name = "cb_Perfil";
+            this.cb_Perfil.Size = new System.Drawing.Size(121, 21);
+            this.cb_Perfil.TabIndex = 4;
+            // 
+            // cb_Usuario
+            // 
+            this.cb_Usuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_Usuario.FormattingEnabled = true;
+            this.cb_Usuario.Items.AddRange(new object[] {
+            "Maria Vargas",
+            "Juan Gomez",
+            "Ana Montes",
+            "Antoni Díaz",
+            "Rebeca Herrera"});
+            this.cb_Usuario.Location = new System.Drawing.Point(332, 91);
+            this.cb_Usuario.Name = "cb_Usuario";
+            this.cb_Usuario.Size = new System.Drawing.Size(121, 21);
+            this.cb_Usuario.TabIndex = 5;
+            this.cb_Usuario.SelectedIndexChanged += new System.EventHandler(this.cb_Usuario_SelectedIndexChanged);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(534, 91);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 6;
             // 
             // FormAplicacion
             // 
@@ -412,7 +420,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de Selección";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FormAplicacion_Load);
             this.menuSuperio.ResumeLayout(false);
             this.menuSuperio.PerformLayout();
             this.panelMenu.ResumeLayout(false);
@@ -420,14 +427,13 @@
             this.TabSistemaSeleccion.ResumeLayout(false);
             this.tabAdmin.ResumeLayout(false);
             this.tabAdmin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.perfilesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seleccionBDDataSet)).EndInit();
             this.tabMantenimiento.ResumeLayout(false);
             this.tabMantenimiento.PerformLayout();
             this.tabEstadistica.ResumeLayout(false);
             this.tabEstadistica.PerformLayout();
             this.tabCandidato.ResumeLayout(false);
             this.tabCandidato.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.perfilesBindingSource)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.perfilesBindingSource1)).EndInit();
@@ -461,13 +467,12 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbox_Perfiles;
-        private System.Windows.Forms.TextBox txt_nickNameUsuario;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private SeleccionBDDataSet seleccionBDDataSet;
         private System.Windows.Forms.BindingSource perfilesBindingSource;
-        private SeleccionBDDataSetTableAdapters.PerfilesTableAdapter perfilesTableAdapter;
         private System.Windows.Forms.BindingSource perfilesBindingSource1;
+        private System.Windows.Forms.ComboBox cb_Usuario;
+        private System.Windows.Forms.ComboBox cb_Perfil;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

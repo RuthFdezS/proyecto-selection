@@ -180,30 +180,107 @@ namespace P
 
         }
 
-        private void FormAplicacion_Load(object sender, EventArgs e)
-        {
-            // TODO: esta línea de código carga datos en la tabla 'seleccionBDDataSet.Perfiles' Puede moverla o quitarla según sea necesario.
-            this.perfilesTableAdapter.Fill(this.seleccionBDDataSet.Perfiles);
-
-        }
-
         private void btn_actualizarPerfil_Click(object sender, EventArgs e)
         {
             try
             {
-                MessageBox.Show("El perfil ha sido modificado");
+               
 
-                Usuarios usuario = new Usuarios();
+                int opcion_num = 0;
+     
 
-                usuario.nicknameUsuario = txt_nickNameUsuario.Text.Trim();
-                //usuario.pass = txtClave.Text.Trim();
+                switch (cb_Perfil.SelectedItem.ToString())
 
-                //List<pa_ModificarPermisosPerfil_Result> lstresultados = LN.Logica.
+                {
+                    case "Administrador":
+                        {
+                            opcion_num = 1;
+                            break;
+                        }
+
+                    case "Mantenimiento":
+                        {
+                            opcion_num = 2;
+                            break;
+                        }
+
+                    case "Estadístico":
+                        {
+                            opcion_num = 3;
+                            break;
+                        }
+
+                    case "Candidatos":
+                        {
+                            opcion_num = 4;
+                            break;
+                        }
+                }
+
+                switch (cb_Usuario.SelectedItem.ToString())
+                {
+                    case "Maria Vargas":
+                        {
+                            UsuariosPorPerfiles userp = new UsuariosPorPerfiles();
+                            userp.nicknameUsuario = "mariava";
+                            userp.codPerfil = opcion_num;
+                            Logica.Modificar_PermisosPerfil(userp);
+                            MessageBox.Show("El perfil ha sido modificado");
+                            break;
+                        }
+
+                    case "Juan Gomez":
+                        {
+                            UsuariosPorPerfiles userp = new UsuariosPorPerfiles();
+                            userp.nicknameUsuario = "juango";
+                            userp.codPerfil = opcion_num;
+                            Logica.Modificar_PermisosPerfil(userp);
+                            MessageBox.Show("El perfil ha sido modificado");
+                            break;
+                        }
+
+                    case "Ana Montes":
+                        {
+                            UsuariosPorPerfiles userp = new UsuariosPorPerfiles();
+                            userp.nicknameUsuario = "anamo";
+                            userp.codPerfil = opcion_num;
+                            Logica.Modificar_PermisosPerfil(userp);
+                            MessageBox.Show("El perfil ha sido modificado");
+                            break;
+                        }
+
+                    case "Antoni Díaz":
+                        {
+                            UsuariosPorPerfiles userp = new UsuariosPorPerfiles();
+                            userp.nicknameUsuario = "antonidi";
+                            userp.codPerfil = opcion_num;
+                            Logica.Modificar_PermisosPerfil(userp);
+                            MessageBox.Show("El perfil ha sido modificado");
+                            break;
+                        }
+
+                    case "Rebeca Herrera":
+                        {
+                            UsuariosPorPerfiles userp = new UsuariosPorPerfiles();
+                            userp.nicknameUsuario = "rebecahe";
+                            userp.codPerfil = opcion_num;
+                            Logica.Modificar_PermisosPerfil(userp);
+                            MessageBox.Show("El perfil ha sido modificado");
+                            break;
+                        }
+                }
+
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void cb_Usuario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

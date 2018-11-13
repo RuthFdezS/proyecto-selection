@@ -11,9 +11,9 @@ namespace E
 {
     using System;
     
-    public partial class pa_ObtenerPerfilesUsuario_Result
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public string nicknameUsuario { get; set; }
-        public string nomperfil { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
