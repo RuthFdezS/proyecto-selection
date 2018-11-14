@@ -18,6 +18,7 @@ namespace P
         {
             InitializeComponent();
         }
+        #region METODOS BASICOS
 
 
         private void Limpiar()
@@ -72,7 +73,7 @@ namespace P
                 e.titulo = this.cboTitulo.Text.Trim();
 
                 Logica.Agregar_Puesto(e);
-                MessageBox.Show("Puesto agregado");
+                MessageBox.Show("Puesto agregado con éxito");
                 Limpiar();
                 CargarLista();
             }
@@ -95,5 +96,7 @@ namespace P
             Agregar();
             Limpiar();
         }
+
+        #endregion
     }
 }
