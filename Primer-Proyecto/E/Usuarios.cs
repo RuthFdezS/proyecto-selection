@@ -24,6 +24,11 @@ namespace E
         public string pass { get; set; }
         public Nullable<bool> activo { get; set; }
     
+<<<<<<< HEAD
+=======
+        public virtual Usuarios Usuarios1 { get; set; }
+        public virtual Usuarios Usuarios2 { get; set; }
+>>>>>>> 6d1d6dde61926c1ef9f2b171a7285dcf51d70d66
         public virtual ICollection<UsuariosPorPerfiles> UsuariosPorPerfiles { get; set; }
     }
 }

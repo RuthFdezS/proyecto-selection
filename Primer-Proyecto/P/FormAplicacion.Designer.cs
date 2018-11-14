@@ -39,6 +39,14 @@
             this.btn_Mantenimiento = new System.Windows.Forms.RadioButton();
             this.btn_Admin = new System.Windows.Forms.RadioButton();
             this.TabSistemaSeleccion = new System.Windows.Forms.TabControl();
+<<<<<<< HEAD
+=======
+            this.tabAdmin = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_actualizarPerfil = new System.Windows.Forms.Button();
+>>>>>>> 6d1d6dde61926c1ef9f2b171a7285dcf51d70d66
             this.tabMantenimiento = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_expediente = new System.Windows.Forms.Button();
@@ -46,6 +54,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.tabCandidato = new System.Windows.Forms.TabPage();
+<<<<<<< HEAD
             this.label5 = new System.Windows.Forms.Label();
             this.btn_puesto = new System.Windows.Forms.Button();
             this.tabAdmin = new System.Windows.Forms.TabPage();
@@ -59,14 +68,32 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_usuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.perfilesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+=======
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.perfilesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssl_usuario = new System.Windows.Forms.ToolStripStatusLabel();
+>>>>>>> 6d1d6dde61926c1ef9f2b171a7285dcf51d70d66
             this.perfilesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.cb_Perfil = new System.Windows.Forms.ComboBox();
+            this.cb_Usuario = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.menuSuperio.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.TabSistemaSeleccion.SuspendLayout();
+<<<<<<< HEAD
             this.tabMantenimiento.SuspendLayout();
             this.tabEstadistica.SuspendLayout();
             this.tabCandidato.SuspendLayout();
             this.tabAdmin.SuspendLayout();
+=======
+            this.tabAdmin.SuspendLayout();
+            this.tabMantenimiento.SuspendLayout();
+            this.tabEstadistica.SuspendLayout();
+            this.tabCandidato.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.perfilesBindingSource)).BeginInit();
+>>>>>>> 6d1d6dde61926c1ef9f2b171a7285dcf51d70d66
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.perfilesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.perfilesBindingSource1)).BeginInit();
@@ -206,6 +233,64 @@
             this.TabSistemaSeleccion.Size = new System.Drawing.Size(875, 374);
             this.TabSistemaSeleccion.TabIndex = 2;
             // 
+<<<<<<< HEAD
+=======
+            // tabAdmin
+            // 
+            this.tabAdmin.Controls.Add(this.comboBox1);
+            this.tabAdmin.Controls.Add(this.cb_Usuario);
+            this.tabAdmin.Controls.Add(this.cb_Perfil);
+            this.tabAdmin.Controls.Add(this.label3);
+            this.tabAdmin.Controls.Add(this.label2);
+            this.tabAdmin.Controls.Add(this.label1);
+            this.tabAdmin.Controls.Add(this.btn_actualizarPerfil);
+            this.tabAdmin.Location = new System.Drawing.Point(4, 22);
+            this.tabAdmin.Name = "tabAdmin";
+            this.tabAdmin.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAdmin.Size = new System.Drawing.Size(867, 394);
+            this.tabAdmin.TabIndex = 0;
+            this.tabAdmin.Text = "Administrador";
+            this.tabAdmin.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(217, 138);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Perfil";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(214, 100);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Usuario";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(327, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(215, 25);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "CAMBIAR PERMISOS";
+            // 
+            // btn_actualizarPerfil
+            // 
+            this.btn_actualizarPerfil.Location = new System.Drawing.Point(386, 195);
+            this.btn_actualizarPerfil.Name = "btn_actualizarPerfil";
+            this.btn_actualizarPerfil.Size = new System.Drawing.Size(75, 23);
+            this.btn_actualizarPerfil.TabIndex = 0;
+            this.btn_actualizarPerfil.Text = "Actualizar";
+            this.btn_actualizarPerfil.UseVisualStyleBackColor = true;
+            this.btn_actualizarPerfil.Click += new System.EventHandler(this.btn_actualizarPerfil_Click);
+            // 
+>>>>>>> 6d1d6dde61926c1ef9f2b171a7285dcf51d70d66
             // tabMantenimiento
             // 
             this.tabMantenimiento.Controls.Add(this.label4);
@@ -399,6 +484,10 @@
             this.btn_actualizarPerfil.UseVisualStyleBackColor = false;
             this.btn_actualizarPerfil.Click += new System.EventHandler(this.btn_actualizarPerfil_Click);
             // 
+            // perfilesBindingSource
+            // 
+            this.perfilesBindingSource.DataMember = "Perfiles";
+            // 
             // statusStrip1
             // 
             this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
@@ -424,6 +513,7 @@
             this.tssl_usuario.Size = new System.Drawing.Size(72, 17);
             this.tssl_usuario.Text = "(sin usuario)";
             // 
+<<<<<<< HEAD
             // perfilesBindingSource
             // 
             this.perfilesBindingSource.DataMember = "Perfiles";
@@ -431,6 +521,49 @@
             // perfilesBindingSource1
             // 
             this.perfilesBindingSource1.DataMember = "Perfiles";
+=======
+            // perfilesBindingSource1
+            // 
+            this.perfilesBindingSource1.DataMember = "Perfiles";
+            // 
+            // cb_Perfil
+            // 
+            this.cb_Perfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_Perfil.FormattingEnabled = true;
+            this.cb_Perfil.Items.AddRange(new object[] {
+            "Administrador",
+            "Mantenimiento",
+            "Estadístico",
+            "Candidatos"});
+            this.cb_Perfil.Location = new System.Drawing.Point(332, 130);
+            this.cb_Perfil.Name = "cb_Perfil";
+            this.cb_Perfil.Size = new System.Drawing.Size(121, 21);
+            this.cb_Perfil.TabIndex = 4;
+            // 
+            // cb_Usuario
+            // 
+            this.cb_Usuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_Usuario.FormattingEnabled = true;
+            this.cb_Usuario.Items.AddRange(new object[] {
+            "Maria Vargas",
+            "Juan Gomez",
+            "Ana Montes",
+            "Antoni Díaz",
+            "Rebeca Herrera"});
+            this.cb_Usuario.Location = new System.Drawing.Point(332, 91);
+            this.cb_Usuario.Name = "cb_Usuario";
+            this.cb_Usuario.Size = new System.Drawing.Size(121, 21);
+            this.cb_Usuario.TabIndex = 5;
+            this.cb_Usuario.SelectedIndexChanged += new System.EventHandler(this.cb_Usuario_SelectedIndexChanged);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(534, 91);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 6;
+>>>>>>> 6d1d6dde61926c1ef9f2b171a7285dcf51d70d66
             // 
             // FormAplicacion
             // 
@@ -450,14 +583,23 @@
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
             this.TabSistemaSeleccion.ResumeLayout(false);
+<<<<<<< HEAD
+=======
+            this.tabAdmin.ResumeLayout(false);
+            this.tabAdmin.PerformLayout();
+>>>>>>> 6d1d6dde61926c1ef9f2b171a7285dcf51d70d66
             this.tabMantenimiento.ResumeLayout(false);
             this.tabMantenimiento.PerformLayout();
             this.tabEstadistica.ResumeLayout(false);
             this.tabEstadistica.PerformLayout();
             this.tabCandidato.ResumeLayout(false);
             this.tabCandidato.PerformLayout();
+<<<<<<< HEAD
             this.tabAdmin.ResumeLayout(false);
             this.tabAdmin.PerformLayout();
+=======
+            ((System.ComponentModel.ISupportInitialize)(this.perfilesBindingSource)).EndInit();
+>>>>>>> 6d1d6dde61926c1ef9f2b171a7285dcf51d70d66
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.perfilesBindingSource)).EndInit();
@@ -496,9 +638,13 @@
         private System.Windows.Forms.BindingSource perfilesBindingSource1;
         private System.Windows.Forms.ComboBox cb_Usuario;
         private System.Windows.Forms.ComboBox cb_Perfil;
+<<<<<<< HEAD
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_expediente;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btn_puesto;
+=======
+        private System.Windows.Forms.ComboBox comboBox1;
+>>>>>>> 6d1d6dde61926c1ef9f2b171a7285dcf51d70d66
     }
 }

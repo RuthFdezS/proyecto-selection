@@ -23,6 +23,11 @@ namespace E
         public string nomperfil { get; set; }
         public Nullable<bool> activo { get; set; }
     
+<<<<<<< HEAD
+=======
+        public virtual Perfiles Perfiles1 { get; set; }
+        public virtual Perfiles Perfiles2 { get; set; }
+>>>>>>> 6d1d6dde61926c1ef9f2b171a7285dcf51d70d66
         public virtual ICollection<UsuariosPorPerfiles> UsuariosPorPerfiles { get; set; }
     }
 }

@@ -32,8 +32,10 @@ namespace E
         public DbSet<Perfiles> Perfiles { get; set; }
         public DbSet<Puesto> Puesto { get; set; }
         public DbSet<PuestoPorExpediente> PuestoPorExpediente { get; set; }
+        public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<UsuariosPorPerfiles> UsuariosPorPerfiles { get; set; }
+<<<<<<< HEAD
     
         public virtual ObjectResult<pa_AgregarExpediente_Result> pa_AgregarExpediente(string identificacion, string promedioprueba, Nullable<System.DateTime> fechanacimiento, string nombre, string apellido, string correoelectronico, string genero, string estadocivil, string idioma, string certificacion, string titulo, string ubicacion)
         {
@@ -149,6 +151,8 @@ namespace E
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_ModificarExpediente_Result>("pa_ModificarExpediente", identificacionParameter, promediopruebaParameter, fechanacimientoParameter, nombreParameter, apellidoParameter, correoelectronicoParameter, generoParameter, estadocivilParameter, idiomaParameter, certificacionParameter, tituloParameter, ubicacionParameter);
         }
+=======
+>>>>>>> 6d1d6dde61926c1ef9f2b171a7285dcf51d70d66
     
         public virtual ObjectResult<pa_ModificarPermisosPerfil_Result> pa_ModificarPermisosPerfil(string nicknameUsuario, Nullable<int> codPerfil)
         {
@@ -199,6 +203,7 @@ namespace E
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_VerificarLogin_Result>("pa_VerificarLogin", nicknameUsuarioParameter, passParameter);
         }
     
+<<<<<<< HEAD
         public virtual int pa_AgregarPuesto(Nullable<int> codpuesto, Nullable<int> disponibilidad, string nombrepuesto, string idioma, string certificacion, string titulo, string ubicacion)
         {
             var codpuestoParameter = codpuesto.HasValue ?
@@ -230,6 +235,109 @@ namespace E
                 new ObjectParameter("ubicacion", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("pa_AgregarPuesto", codpuestoParameter, disponibilidadParameter, nombrepuestoParameter, idiomaParameter, certificacionParameter, tituloParameter, ubicacionParameter);
+=======
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+>>>>>>> 6d1d6dde61926c1ef9f2b171a7285dcf51d70d66
         }
     }
 }

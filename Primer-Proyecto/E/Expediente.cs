@@ -32,6 +32,8 @@ namespace E
         public string titulo { get; set; }
         public string ubicacion { get; set; }
     
+        public virtual Expediente Expediente1 { get; set; }
+        public virtual Expediente Expediente2 { get; set; }
         public virtual ICollection<PuestoPorExpediente> PuestoPorExpediente { get; set; }
     }
 }

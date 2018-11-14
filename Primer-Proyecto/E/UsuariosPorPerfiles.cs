@@ -16,9 +16,17 @@ namespace E
     {
         public string nicknameUsuario { get; set; }
         public int codPerfil { get; set; }
+<<<<<<< HEAD
         public Nullable<bool> activo { get; set; }
     
         public virtual Perfiles Perfiles { get; set; }
         public virtual Usuarios Usuarios { get; set; }
+=======
+    
+        public virtual Perfiles Perfiles { get; set; }
+        public virtual Usuarios Usuarios { get; set; }
+        public virtual UsuariosPorPerfiles UsuariosPorPerfiles1 { get; set; }
+        public virtual UsuariosPorPerfiles UsuariosPorPerfiles2 { get; set; }
+>>>>>>> 6d1d6dde61926c1ef9f2b171a7285dcf51d70d66
     }
 }

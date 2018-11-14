@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\Ruth\Documents\0-UAM 2017 - 2018\UAM 6to Cuatrimestre\PROGRAMACION 3\0-PRIMER PROYECTO\REPO-PRIMER-PROYECTO\proyecto-selection\primer-proyecto\E\Expediente.edmx'. 
+=======
+﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\Ruth\Documents\0-UAM 2017 - 2018\UAM 6to Cuatrimestre\PROGRAMACION 3\0-PRIMER PROYECTO\proyecto-selection\Primer-Proyecto\E\Expediente.edmx'. 
+>>>>>>> 6d1d6dde61926c1ef9f2b171a7285dcf51d70d66
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

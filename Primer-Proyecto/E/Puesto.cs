@@ -26,6 +26,8 @@ namespace E
         public string certificacion { get; set; }
         public string titulo { get; set; }
     
+        public virtual Puesto Puesto1 { get; set; }
+        public virtual Puesto Puesto2 { get; set; }
         public virtual ICollection<PuestoPorExpediente> PuestoPorExpediente { get; set; }
     }
 }

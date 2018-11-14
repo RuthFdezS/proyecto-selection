@@ -216,6 +216,7 @@ namespace P
                             break;
                         }
                 }
+<<<<<<< HEAD
 
                 switch (cb_Usuario.SelectedItem.ToString())
                 {
@@ -239,6 +240,31 @@ namespace P
                             break;
                         }
 
+=======
+
+                switch (cb_Usuario.SelectedItem.ToString())
+                {
+                    case "Maria Vargas":
+                        {
+                            UsuariosPorPerfiles userp = new UsuariosPorPerfiles();
+                            userp.nicknameUsuario = "mariava";
+                            userp.codPerfil = opcion_num;
+                            Logica.Modificar_PermisosPerfil(userp);
+                            MessageBox.Show("El perfil ha sido modificado");
+                            break;
+                        }
+
+                    case "Juan Gomez":
+                        {
+                            UsuariosPorPerfiles userp = new UsuariosPorPerfiles();
+                            userp.nicknameUsuario = "juango";
+                            userp.codPerfil = opcion_num;
+                            Logica.Modificar_PermisosPerfil(userp);
+                            MessageBox.Show("El perfil ha sido modificado");
+                            break;
+                        }
+
+>>>>>>> 6d1d6dde61926c1ef9f2b171a7285dcf51d70d66
                     case "Ana Montes":
                         {
                             UsuariosPorPerfiles userp = new UsuariosPorPerfiles();
@@ -282,6 +308,7 @@ namespace P
         {
 
         }
+<<<<<<< HEAD
 
         private void btn_expediente_Click(object sender, EventArgs e)
         {
@@ -299,5 +326,7 @@ namespace P
             FrmPuesto frm_puesto = new FrmPuesto();
             frm_puesto.Show();
         }
+=======
+>>>>>>> 6d1d6dde61926c1ef9f2b171a7285dcf51d70d66
     }
 }
