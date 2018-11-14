@@ -64,19 +64,14 @@
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmMenu.cs">
+    <Compile Include="FrmPuesto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmMenu.Designer.cs">
-      <DependentUpon>FrmMenu.cs</DependentUpon>
+    <Compile Include="FrmPuesto.Designer.cs">
+      <DependentUpon>FrmPuesto.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeleccionBDDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SeleccionBDDataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="FormAplicacion.resx">
       <DependentUpon>FormAplicacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,8 +81,8 @@
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmMenu.resx">
-      <DependentUpon>FrmMenu.cs</DependentUpon>
+    <EmbeddedResource Include="FrmPuesto.resx">
+      <DependentUpon>FrmPuesto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -107,17 +102,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SeleccionBDDataSet.xsc">
-      <DependentUpon>SeleccionBDDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="SeleccionBDDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SeleccionBDDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SeleccionBDDataSet.xss">
-      <DependentUpon>SeleccionBDDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

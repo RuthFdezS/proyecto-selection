@@ -11,9 +11,7 @@ namespace E
 {
     using System;
     
-    public partial class pa_ObtenerPerfilesUsuario_Result
+    public partial class pa_EliminarExpediente_Result
     {
-        public string nicknameUsuario { get; set; }
-        public string nomperfil { get; set; }
     }
 }

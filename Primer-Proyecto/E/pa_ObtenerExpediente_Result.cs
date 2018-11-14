@@ -10,15 +10,9 @@
 namespace E
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Expediente
+    public partial class pa_ObtenerExpediente_Result
     {
-        public Expediente()
-        {
-            this.PuestoPorExpediente = new HashSet<PuestoPorExpediente>();
-        }
-    
         public string identificacion { get; set; }
         public string promedioprueba { get; set; }
         public Nullable<System.DateTime> fechanacimiento { get; set; }
@@ -31,7 +25,5 @@ namespace E
         public string certificacion { get; set; }
         public string titulo { get; set; }
         public string ubicacion { get; set; }
-    
-        public virtual ICollection<PuestoPorExpediente> PuestoPorExpediente { get; set; }
     }
 }

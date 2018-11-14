@@ -4,61 +4,61 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ExpedienteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Expediente.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Expediente">
           <Key>
             <PropertyRef Name="identificacion" />
           </Key>
           <Property Name="identificacion" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="promedioprueba" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="fechanacimiento" Type="date" Nullable="false" />
-          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="apellido" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="correoelectronico" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="genero" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="estadocivil" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="idioma" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="certificacion" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="titulo" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ubicacion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="promedioprueba" Type="varchar" MaxLength="50" />
+          <Property Name="fechanacimiento" Type="date" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="apellido" Type="varchar" MaxLength="50" />
+          <Property Name="correoelectronico" Type="varchar" MaxLength="50" />
+          <Property Name="genero" Type="varchar" MaxLength="50" />
+          <Property Name="estadocivil" Type="varchar" MaxLength="50" />
+          <Property Name="idioma" Type="varchar" MaxLength="50" />
+          <Property Name="certificacion" Type="varchar" MaxLength="50" />
+          <Property Name="titulo" Type="varchar" MaxLength="50" />
+          <Property Name="ubicacion" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Perfiles">
           <Key>
             <PropertyRef Name="codPerfil" />
           </Key>
           <Property Name="codPerfil" Type="int" Nullable="false" />
-          <Property Name="nomperfil" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="activo" Type="bit" Nullable="false" />
+          <Property Name="nomperfil" Type="varchar" MaxLength="50" />
+          <Property Name="activo" Type="bit" />
         </EntityType>
         <EntityType Name="Puesto">
           <Key>
             <PropertyRef Name="codpuesto" />
           </Key>
           <Property Name="codpuesto" Type="int" Nullable="false" />
-          <Property Name="disponibilidad" Type="int" Nullable="false" />
-          <Property Name="nompuesto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="disponibilidad" Type="int" />
+          <Property Name="nombrepuesto" Type="varchar" MaxLength="50" />
+          <Property Name="idioma" Type="varchar" MaxLength="50" />
+          <Property Name="certificacion" Type="varchar" MaxLength="50" />
+          <Property Name="titulo" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PuestoPorExpediente">
           <Key>
-            <PropertyRef Name="codpuesto" />
+            <PropertyRef Name="codPuesto" />
             <PropertyRef Name="identificacion" />
           </Key>
-          <Property Name="codpuesto" Type="int" Nullable="false" />
+          <Property Name="codPuesto" Type="int" Nullable="false" />
           <Property Name="identificacion" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="titulo" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="certificacion" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="idioma" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="aproboprueba" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="promedioprueba" Type="int" Nullable="false" />
+          <Property Name="aproboprueba" Type="varchar" MaxLength="50" />
+          <Property Name="promedioprueba" Type="int" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
             <PropertyRef Name="nicknameUsuario" />
           </Key>
           <Property Name="nicknameUsuario" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="nomusuario" Type="varchar" MaxLength="20" />
-          <Property Name="pass" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="activo" Type="bit" Nullable="false" />
+          <Property Name="nomusuario" Type="varchar" MaxLength="50" />
+          <Property Name="pass" Type="varchar" MaxLength="15" />
+          <Property Name="activo" Type="bit" />
         </EntityType>
         <EntityType Name="UsuariosPorPerfiles">
           <Key>
@@ -67,8 +67,9 @@
           </Key>
           <Property Name="nicknameUsuario" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="codPerfil" Type="int" Nullable="false" />
+          <Property Name="activo" Type="bit" />
         </EntityType>
-        <Association Name="FK__UsuariosP__codPe__403A8C7D">
+        <Association Name="FK_PuestoPorExpediente_Expediente">
           <End Role="Expediente" Type="Self.Expediente" Multiplicity="1" />
           <End Role="PuestoPorExpediente" Type="Self.PuestoPorExpediente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -80,7 +81,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UsuariosP__codPe__48CFD27E">
+        <Association Name="FK_PuestoPorExpediente_Puesto">
+          <End Role="Puesto" Type="Self.Puesto" Multiplicity="1" />
+          <End Role="PuestoPorExpediente" Type="Self.PuestoPorExpediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puesto">
+              <PropertyRef Name="codpuesto" />
+            </Principal>
+            <Dependent Role="PuestoPorExpediente">
+              <PropertyRef Name="codPuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuariosPorPerfiles_Perfiles">
           <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
           <End Role="UsuariosPorPerfiles" Type="Self.UsuariosPorPerfiles" Multiplicity="*" />
           <ReferentialConstraint>
@@ -92,19 +105,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UsuariosP__nickn__3F466844">
-          <End Role="Puesto" Type="Self.Puesto" Multiplicity="1" />
-          <End Role="PuestoPorExpediente" Type="Self.PuestoPorExpediente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Puesto">
-              <PropertyRef Name="codpuesto" />
-            </Principal>
-            <Dependent Role="PuestoPorExpediente">
-              <PropertyRef Name="codpuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UsuariosP__nickn__47DBAE45">
+        <Association Name="FK_UsuariosPorPerfiles_Usuarios">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
           <End Role="UsuariosPorPerfiles" Type="Self.UsuariosPorPerfiles" Multiplicity="*" />
           <ReferentialConstraint>
@@ -116,10 +117,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="pa_AgregarExpediente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="identificacion" Type="varchar" Mode="In" />
+          <Parameter Name="promedioprueba" Type="varchar" Mode="In" />
+          <Parameter Name="fechanacimiento" Type="date" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="apellido" Type="varchar" Mode="In" />
+          <Parameter Name="correoelectronico" Type="varchar" Mode="In" />
+          <Parameter Name="genero" Type="varchar" Mode="In" />
+          <Parameter Name="estadocivil" Type="varchar" Mode="In" />
+          <Parameter Name="idioma" Type="varchar" Mode="In" />
+          <Parameter Name="certificacion" Type="varchar" Mode="In" />
+          <Parameter Name="titulo" Type="varchar" Mode="In" />
+          <Parameter Name="ubicacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_AgregarPuesto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codpuesto" Type="int" Mode="In" />
+          <Parameter Name="disponibilidad" Type="int" Mode="In" />
+          <Parameter Name="nombrepuesto" Type="varchar" Mode="In" />
+          <Parameter Name="idioma" Type="varchar" Mode="In" />
+          <Parameter Name="certificacion" Type="varchar" Mode="In" />
+          <Parameter Name="titulo" Type="varchar" Mode="In" />
+          <Parameter Name="ubicacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_EliminarExpediente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="identificacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_ModificarExpediente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="identificacion" Type="varchar" Mode="In" />
+          <Parameter Name="promedioprueba" Type="varchar" Mode="In" />
+          <Parameter Name="fechanacimiento" Type="date" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="apellido" Type="varchar" Mode="In" />
+          <Parameter Name="correoelectronico" Type="varchar" Mode="In" />
+          <Parameter Name="genero" Type="varchar" Mode="In" />
+          <Parameter Name="estadocivil" Type="varchar" Mode="In" />
+          <Parameter Name="idioma" Type="varchar" Mode="In" />
+          <Parameter Name="certificacion" Type="varchar" Mode="In" />
+          <Parameter Name="titulo" Type="varchar" Mode="In" />
+          <Parameter Name="ubicacion" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="pa_ModificarPermisosPerfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nicknameUsuario" Type="varchar" Mode="In" />
           <Parameter Name="codPerfil" Type="int" Mode="In" />
         </Function>
+        <Function Name="pa_ObtenerExpediente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="pa_ObtenerNombreUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nicknameUsuario" Type="varchar" Mode="In" />
         </Function>
@@ -130,26 +172,26 @@
           <Parameter Name="nicknameUsuario" Type="varchar" Mode="In" />
           <Parameter Name="pass" Type="varchar" Mode="In" />
         </Function>
-        <EntityContainer Name="ExpedienteModelStoreContainer">
+        <EntityContainer Name="ExpedienteStoreContainer">
           <EntitySet Name="Expediente" EntityType="Self.Expediente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Puesto" EntityType="Self.Puesto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PuestoPorExpediente" EntityType="Self.PuestoPorExpediente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsuariosPorPerfiles" EntityType="Self.UsuariosPorPerfiles" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__UsuariosP__codPe__403A8C7D" Association="Self.FK__UsuariosP__codPe__403A8C7D">
+          <AssociationSet Name="FK_PuestoPorExpediente_Expediente" Association="Self.FK_PuestoPorExpediente_Expediente">
             <End Role="Expediente" EntitySet="Expediente" />
             <End Role="PuestoPorExpediente" EntitySet="PuestoPorExpediente" />
           </AssociationSet>
-          <AssociationSet Name="FK__UsuariosP__codPe__48CFD27E" Association="Self.FK__UsuariosP__codPe__48CFD27E">
-            <End Role="Perfiles" EntitySet="Perfiles" />
-            <End Role="UsuariosPorPerfiles" EntitySet="UsuariosPorPerfiles" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UsuariosP__nickn__3F466844" Association="Self.FK__UsuariosP__nickn__3F466844">
+          <AssociationSet Name="FK_PuestoPorExpediente_Puesto" Association="Self.FK_PuestoPorExpediente_Puesto">
             <End Role="Puesto" EntitySet="Puesto" />
             <End Role="PuestoPorExpediente" EntitySet="PuestoPorExpediente" />
           </AssociationSet>
-          <AssociationSet Name="FK__UsuariosP__nickn__47DBAE45" Association="Self.FK__UsuariosP__nickn__47DBAE45">
+          <AssociationSet Name="FK_UsuariosPorPerfiles_Perfiles" Association="Self.FK_UsuariosPorPerfiles_Perfiles">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="UsuariosPorPerfiles" EntitySet="UsuariosPorPerfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuariosPorPerfiles_Usuarios" Association="Self.FK_UsuariosPorPerfiles_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="UsuariosPorPerfiles" EntitySet="UsuariosPorPerfiles" />
           </AssociationSet>
@@ -157,69 +199,80 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ExpedienteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Expediente" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Expediente">
           <Key>
             <PropertyRef Name="identificacion" />
           </Key>
           <Property Name="identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="promedioprueba" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fechanacimiento" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="correoelectronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="genero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="estadocivil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="idioma" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="certificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ubicacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="PuestoPorExpediente" Relationship="Self.FK__UsuariosP__codPe__403A8C7D" FromRole="Expediente" ToRole="PuestoPorExpediente" />
+          <Property Name="promedioprueba" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechanacimiento" Type="DateTime" Precision="0" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="correoelectronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="genero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="estadocivil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idioma" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="certificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ubicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PuestoPorExpediente" Relationship="Self.FK_PuestoPorExpediente_Expediente" FromRole="Expediente" ToRole="PuestoPorExpediente" />
         </EntityType>
         <EntityType Name="Perfiles">
           <Key>
             <PropertyRef Name="codPerfil" />
           </Key>
           <Property Name="codPerfil" Type="Int32" Nullable="false" />
-          <Property Name="nomperfil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="activo" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Usuarios" Relationship="Self.UsuariosPorPerfiles" FromRole="Perfiles" ToRole="Usuarios" />
+          <Property Name="nomperfil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="UsuariosPorPerfiles" Relationship="Self.FK_UsuariosPorPerfiles_Perfiles" FromRole="Perfiles" ToRole="UsuariosPorPerfiles" />
         </EntityType>
         <EntityType Name="Puesto">
           <Key>
             <PropertyRef Name="codpuesto" />
           </Key>
           <Property Name="codpuesto" Type="Int32" Nullable="false" />
-          <Property Name="disponibilidad" Type="Int32" Nullable="false" />
-          <Property Name="nompuesto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="PuestoPorExpediente" Relationship="Self.FK__UsuariosP__nickn__3F466844" FromRole="Puesto" ToRole="PuestoPorExpediente" />
+          <Property Name="disponibilidad" Type="Int32" />
+          <Property Name="nombrepuesto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idioma" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="certificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PuestoPorExpediente" Relationship="Self.FK_PuestoPorExpediente_Puesto" FromRole="Puesto" ToRole="PuestoPorExpediente" />
         </EntityType>
         <EntityType Name="PuestoPorExpediente">
           <Key>
-            <PropertyRef Name="codpuesto" />
+            <PropertyRef Name="codPuesto" />
             <PropertyRef Name="identificacion" />
           </Key>
-          <Property Name="codpuesto" Type="Int32" Nullable="false" />
+          <Property Name="codPuesto" Type="Int32" Nullable="false" />
           <Property Name="identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="certificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="idioma" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="aproboprueba" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="promedioprueba" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Expediente" Relationship="Self.FK__UsuariosP__codPe__403A8C7D" FromRole="PuestoPorExpediente" ToRole="Expediente" />
-          <NavigationProperty Name="Puesto" Relationship="Self.FK__UsuariosP__nickn__3F466844" FromRole="PuestoPorExpediente" ToRole="Puesto" />
+          <Property Name="aproboprueba" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="promedioprueba" Type="Int32" />
+          <NavigationProperty Name="Expediente" Relationship="Self.FK_PuestoPorExpediente_Expediente" FromRole="PuestoPorExpediente" ToRole="Expediente" />
+          <NavigationProperty Name="Puesto" Relationship="Self.FK_PuestoPorExpediente_Puesto" FromRole="PuestoPorExpediente" ToRole="Puesto" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
             <PropertyRef Name="nicknameUsuario" />
           </Key>
           <Property Name="nicknameUsuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nomusuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="pass" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="activo" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Perfiles" Relationship="Self.UsuariosPorPerfiles" FromRole="Usuarios" ToRole="Perfiles" />
+          <Property Name="nomusuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="UsuariosPorPerfiles" Relationship="Self.FK_UsuariosPorPerfiles_Usuarios" FromRole="Usuarios" ToRole="UsuariosPorPerfiles" />
         </EntityType>
-        <Association Name="FK__UsuariosP__codPe__403A8C7D">
+        <EntityType Name="UsuariosPorPerfiles">
+          <Key>
+            <PropertyRef Name="nicknameUsuario" />
+            <PropertyRef Name="codPerfil" />
+          </Key>
+          <Property Name="nicknameUsuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codPerfil" Type="Int32" Nullable="false" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="Perfiles" Relationship="Self.FK_UsuariosPorPerfiles_Perfiles" FromRole="UsuariosPorPerfiles" ToRole="Perfiles" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_UsuariosPorPerfiles_Usuarios" FromRole="UsuariosPorPerfiles" ToRole="Usuarios" />
+        </EntityType>
+        <Association Name="FK_PuestoPorExpediente_Expediente">
           <End Role="Expediente" Type="Self.Expediente" Multiplicity="1" />
           <End Role="PuestoPorExpediente" Type="Self.PuestoPorExpediente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -231,7 +284,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UsuariosP__nickn__3F466844">
+        <Association Name="FK_UsuariosPorPerfiles_Perfiles">
+          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+          <End Role="UsuariosPorPerfiles" Type="Self.UsuariosPorPerfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="codPerfil" />
+            </Principal>
+            <Dependent Role="UsuariosPorPerfiles">
+              <PropertyRef Name="codPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PuestoPorExpediente_Puesto">
           <End Role="Puesto" Type="Self.Puesto" Multiplicity="1" />
           <End Role="PuestoPorExpediente" Type="Self.PuestoPorExpediente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -239,66 +304,137 @@
               <PropertyRef Name="codpuesto" />
             </Principal>
             <Dependent Role="PuestoPorExpediente">
-              <PropertyRef Name="codpuesto" />
+              <PropertyRef Name="codPuesto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="UsuariosPorPerfiles">
-          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="*" />
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+        <Association Name="FK_UsuariosPorPerfiles_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="UsuariosPorPerfiles" Type="Self.UsuariosPorPerfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="nicknameUsuario" />
+            </Principal>
+            <Dependent Role="UsuariosPorPerfiles">
+              <PropertyRef Name="nicknameUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ExpedienteEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ExpedienteEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Expediente" EntityType="Self.Expediente" />
           <EntitySet Name="Perfiles" EntityType="Self.Perfiles" />
           <EntitySet Name="Puesto" EntityType="Self.Puesto" />
           <EntitySet Name="PuestoPorExpediente" EntityType="Self.PuestoPorExpediente" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
-          <AssociationSet Name="FK__UsuariosP__codPe__403A8C7D" Association="Self.FK__UsuariosP__codPe__403A8C7D">
+          <EntitySet Name="UsuariosPorPerfiles" EntityType="Self.UsuariosPorPerfiles" />
+          <AssociationSet Name="FK_PuestoPorExpediente_Expediente" Association="Self.FK_PuestoPorExpediente_Expediente">
             <End Role="Expediente" EntitySet="Expediente" />
             <End Role="PuestoPorExpediente" EntitySet="PuestoPorExpediente" />
           </AssociationSet>
-          <AssociationSet Name="FK__UsuariosP__nickn__3F466844" Association="Self.FK__UsuariosP__nickn__3F466844">
+          <AssociationSet Name="FK_UsuariosPorPerfiles_Perfiles" Association="Self.FK_UsuariosPorPerfiles_Perfiles">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="UsuariosPorPerfiles" EntitySet="UsuariosPorPerfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PuestoPorExpediente_Puesto" Association="Self.FK_PuestoPorExpediente_Puesto">
             <End Role="Puesto" EntitySet="Puesto" />
             <End Role="PuestoPorExpediente" EntitySet="PuestoPorExpediente" />
           </AssociationSet>
-          <AssociationSet Name="UsuariosPorPerfiles" Association="Self.UsuariosPorPerfiles">
-            <End Role="Perfiles" EntitySet="Perfiles" />
+          <AssociationSet Name="FK_UsuariosPorPerfiles_Usuarios" Association="Self.FK_UsuariosPorPerfiles_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="UsuariosPorPerfiles" EntitySet="UsuariosPorPerfiles" />
           </AssociationSet>
-          <FunctionImport Name="pa_ModificarPermisosPerfil" ReturnType="Collection(ExpedienteModel.pa_ModificarPermisosPerfil_Result)">
+          <FunctionImport Name="pa_AgregarExpediente" ReturnType="Collection(Expediente.pa_AgregarExpediente_Result)">
+            <Parameter Name="identificacion" Mode="In" Type="String" />
+            <Parameter Name="promedioprueba" Mode="In" Type="String" />
+            <Parameter Name="fechanacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellido" Mode="In" Type="String" />
+            <Parameter Name="correoelectronico" Mode="In" Type="String" />
+            <Parameter Name="genero" Mode="In" Type="String" />
+            <Parameter Name="estadocivil" Mode="In" Type="String" />
+            <Parameter Name="idioma" Mode="In" Type="String" />
+            <Parameter Name="certificacion" Mode="In" Type="String" />
+            <Parameter Name="titulo" Mode="In" Type="String" />
+            <Parameter Name="ubicacion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_EliminarExpediente" ReturnType="Collection(Expediente.pa_EliminarExpediente_Result)">
+          <Parameter Name="identificacion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_ModificarExpediente" ReturnType="Collection(Expediente.pa_ModificarExpediente_Result)">
+            <Parameter Name="identificacion" Mode="In" Type="String" />
+            <Parameter Name="promedioprueba" Mode="In" Type="String" />
+            <Parameter Name="fechanacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellido" Mode="In" Type="String" />
+            <Parameter Name="correoelectronico" Mode="In" Type="String" />
+            <Parameter Name="genero" Mode="In" Type="String" />
+            <Parameter Name="estadocivil" Mode="In" Type="String" />
+            <Parameter Name="idioma" Mode="In" Type="String" />
+            <Parameter Name="certificacion" Mode="In" Type="String" />
+            <Parameter Name="titulo" Mode="In" Type="String" />
+            <Parameter Name="ubicacion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_ModificarPermisosPerfil" ReturnType="Collection(Expediente.pa_ModificarPermisosPerfil_Result)">
             <Parameter Name="nicknameUsuario" Mode="In" Type="String" />
             <Parameter Name="codPerfil" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="pa_ObtenerNombreUsuario" ReturnType="Collection(ExpedienteModel.pa_ObtenerNombreUsuario_Result)">
+          <FunctionImport Name="pa_ObtenerExpediente" ReturnType="Collection(Expediente.pa_ObtenerExpediente_Result)" />
+          <FunctionImport Name="pa_ObtenerNombreUsuario" ReturnType="Collection(Expediente.pa_ObtenerNombreUsuario_Result)">
           <Parameter Name="nicknameUsuario" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="pa_VerificarLogin" ReturnType="Collection(ExpedienteModel.pa_VerificarLogin_Result)">
+          <FunctionImport Name="pa_ObtenerPerfilesUsuario" ReturnType="Collection(Expediente.pa_ObtenerPerfilesUsuario_Result)">
+          <Parameter Name="nicknameUsuario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_VerificarLogin" ReturnType="Collection(Expediente.pa_VerificarLogin_Result)">
             <Parameter Name="nicknameUsuario" Mode="In" Type="String" />
             <Parameter Name="pass" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="pa_ObtenerPerfilesUsuario" ReturnType="Collection(ExpedienteModel.pa_ObtenerPerfilesUsuario_Result)">
-            <Parameter Name="nicknameUsuario" Mode="In" Type="String" />
+          <FunctionImport Name="pa_AgregarPuesto">
+            <Parameter Name="codpuesto" Mode="In" Type="Int32" />
+            <Parameter Name="disponibilidad" Mode="In" Type="Int32" />
+            <Parameter Name="nombrepuesto" Mode="In" Type="String" />
+            <Parameter Name="idioma" Mode="In" Type="String" />
+            <Parameter Name="certificacion" Mode="In" Type="String" />
+            <Parameter Name="titulo" Mode="In" Type="String" />
+            <Parameter Name="ubicacion" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="pa_ObtenerExpediente_Result">
+          <Property Type="String" Name="identificacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="promedioprueba" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fechanacimiento" Nullable="true" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="apellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="correoelectronico" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="genero" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="estadocivil" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="idioma" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="certificacion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ubicacion" Nullable="true" MaxLength="50" />
+        </ComplexType>
         <ComplexType Name="pa_ObtenerPerfilesUsuario_Result">
           <Property Type="String" Name="nicknameUsuario" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="nomperfil" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="nomperfil" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="pa_AgregarExpediente_Result" />
+        <ComplexType Name="pa_EliminarExpediente_Result" />
+        <ComplexType Name="pa_ModificarPermisosPerfil_Result" />
+        <ComplexType Name="pa_ModificarExpediente_Result" />
+        <ComplexType Name="pa_ObtenerNombreUsuario_Result">
+          <Property Type="String" Name="nomusuario" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="pa_VerificarLogin_Result">
           <Property Type="String" Name="nicknameUsuario" Nullable="false" MaxLength="20" />
         </ComplexType>
-        <ComplexType Name="pa_ObtenerNombreUsuario_Result">
-          <Property Type="String" Name="nomusuario" Nullable="true" MaxLength="20" />
-        </ComplexType>
-        <ComplexType Name="pa_ModificarPermisosPerfil_Result" />
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ExpedienteModelStoreContainer" CdmEntityContainer="ExpedienteEntities2">
+        <EntityContainerMapping StorageEntityContainer="ExpedienteStoreContainer" CdmEntityContainer="ExpedienteEntities">
           <EntitySetMapping Name="Expediente">
-            <EntityTypeMapping TypeName="ExpedienteModel.Expediente">
+            <EntityTypeMapping TypeName="Expediente.Expediente">
               <MappingFragment StoreEntitySet="Expediente">
                 <ScalarProperty Name="identificacion" ColumnName="identificacion" />
                 <ScalarProperty Name="promedioprueba" ColumnName="promedioprueba" />
@@ -316,7 +452,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Perfiles">
-            <EntityTypeMapping TypeName="ExpedienteModel.Perfiles">
+            <EntityTypeMapping TypeName="Expediente.Perfiles">
               <MappingFragment StoreEntitySet="Perfiles">
                 <ScalarProperty Name="codPerfil" ColumnName="codPerfil" />
                 <ScalarProperty Name="nomperfil" ColumnName="nomperfil" />
@@ -325,29 +461,29 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Puesto">
-            <EntityTypeMapping TypeName="ExpedienteModel.Puesto">
+            <EntityTypeMapping TypeName="Expediente.Puesto">
               <MappingFragment StoreEntitySet="Puesto">
                 <ScalarProperty Name="codpuesto" ColumnName="codpuesto" />
                 <ScalarProperty Name="disponibilidad" ColumnName="disponibilidad" />
-                <ScalarProperty Name="nompuesto" ColumnName="nompuesto" />
+                <ScalarProperty Name="nombrepuesto" ColumnName="nombrepuesto" />
+                <ScalarProperty Name="idioma" ColumnName="idioma" />
+                <ScalarProperty Name="certificacion" ColumnName="certificacion" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PuestoPorExpediente">
-            <EntityTypeMapping TypeName="ExpedienteModel.PuestoPorExpediente">
+            <EntityTypeMapping TypeName="Expediente.PuestoPorExpediente">
               <MappingFragment StoreEntitySet="PuestoPorExpediente">
-                <ScalarProperty Name="codpuesto" ColumnName="codpuesto" />
+                <ScalarProperty Name="codPuesto" ColumnName="codPuesto" />
                 <ScalarProperty Name="identificacion" ColumnName="identificacion" />
-                <ScalarProperty Name="titulo" ColumnName="titulo" />
-                <ScalarProperty Name="certificacion" ColumnName="certificacion" />
-                <ScalarProperty Name="idioma" ColumnName="idioma" />
                 <ScalarProperty Name="aproboprueba" ColumnName="aproboprueba" />
                 <ScalarProperty Name="promedioprueba" ColumnName="promedioprueba" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="ExpedienteModel.Usuarios">
+            <EntityTypeMapping TypeName="Expediente.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
                 <ScalarProperty Name="nicknameUsuario" ColumnName="nicknameUsuario" />
                 <ScalarProperty Name="nomusuario" ColumnName="nomusuario" />
@@ -356,41 +492,76 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="UsuariosPorPerfiles" TypeName="ExpedienteModel.UsuariosPorPerfiles" StoreEntitySet="UsuariosPorPerfiles">
-            <EndProperty Name="Perfiles">
-              <ScalarProperty Name="codPerfil" ColumnName="codPerfil" />
-            </EndProperty>
-            <EndProperty Name="Usuarios">
-              <ScalarProperty Name="nicknameUsuario" ColumnName="nicknameUsuario" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="pa_ModificarPermisosPerfil" FunctionName="ExpedienteModel.Store.pa_ModificarPermisosPerfil" >
+          <EntitySetMapping Name="UsuariosPorPerfiles">
+            <EntityTypeMapping TypeName="Expediente.UsuariosPorPerfiles">
+              <MappingFragment StoreEntitySet="UsuariosPorPerfiles">
+                <ScalarProperty Name="nicknameUsuario" ColumnName="nicknameUsuario" />
+                <ScalarProperty Name="codPerfil" ColumnName="codPerfil" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="pa_AgregarExpediente" FunctionName="Expediente.Store.pa_AgregarExpediente" >
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ExpedienteModel.pa_ModificarPermisosPerfil_Result" />
+              <ComplexTypeMapping TypeName="Expediente.pa_AgregarExpediente_Result" />
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="pa_ObtenerNombreUsuario" FunctionName="ExpedienteModel.Store.pa_ObtenerNombreUsuario" >
+          <FunctionImportMapping FunctionImportName="pa_EliminarExpediente" FunctionName="Expediente.Store.pa_EliminarExpediente" >
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ExpedienteModel.pa_ObtenerNombreUsuario_Result">
+              <ComplexTypeMapping TypeName="Expediente.pa_EliminarExpediente_Result" />
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_ModificarExpediente" FunctionName="Expediente.Store.pa_ModificarExpediente" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Expediente.pa_ModificarExpediente_Result" />
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_ModificarPermisosPerfil" FunctionName="Expediente.Store.pa_ModificarPermisosPerfil" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Expediente.pa_ModificarPermisosPerfil_Result" />
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_ObtenerExpediente" FunctionName="Expediente.Store.pa_ObtenerExpediente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Expediente.pa_ObtenerExpediente_Result">
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+                <ScalarProperty Name="promedioprueba" ColumnName="promedioprueba" />
+                <ScalarProperty Name="fechanacimiento" ColumnName="fechanacimiento" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="correoelectronico" ColumnName="correoelectronico" />
+                <ScalarProperty Name="genero" ColumnName="genero" />
+                <ScalarProperty Name="estadocivil" ColumnName="estadocivil" />
+                <ScalarProperty Name="idioma" ColumnName="idioma" />
+                <ScalarProperty Name="certificacion" ColumnName="certificacion" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_ObtenerNombreUsuario" FunctionName="Expediente.Store.pa_ObtenerNombreUsuario" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Expediente.pa_ObtenerNombreUsuario_Result">
                 <ScalarProperty Name="nomusuario" ColumnName="nomusuario" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="pa_VerificarLogin" FunctionName="ExpedienteModel.Store.pa_VerificarLogin" >
+          <FunctionImportMapping FunctionImportName="pa_ObtenerPerfilesUsuario" FunctionName="Expediente.Store.pa_ObtenerPerfilesUsuario">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ExpedienteModel.pa_VerificarLogin_Result">
-                <ScalarProperty Name="nicknameUsuario" ColumnName="nicknameUsuario" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="pa_ObtenerPerfilesUsuario" FunctionName="ExpedienteModel.Store.pa_ObtenerPerfilesUsuario">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ExpedienteModel.pa_ObtenerPerfilesUsuario_Result">
+              <ComplexTypeMapping TypeName="Expediente.pa_ObtenerPerfilesUsuario_Result">
                 <ScalarProperty Name="nicknameUsuario" ColumnName="nicknameUsuario" />
                 <ScalarProperty Name="nomperfil" ColumnName="nomperfil" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_VerificarLogin" FunctionName="Expediente.Store.pa_VerificarLogin" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Expediente.pa_VerificarLogin_Result">
+                <ScalarProperty Name="nicknameUsuario" ColumnName="nicknameUsuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_AgregarPuesto" FunctionName="Expediente.Store.pa_AgregarPuesto" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -408,7 +579,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="true" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

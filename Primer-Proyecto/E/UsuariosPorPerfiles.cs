@@ -10,10 +10,15 @@
 namespace E
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class pa_ObtenerPerfilesUsuario_Result
+    public partial class UsuariosPorPerfiles
     {
         public string nicknameUsuario { get; set; }
-        public string nomperfil { get; set; }
+        public int codPerfil { get; set; }
+        public Nullable<bool> activo { get; set; }
+    
+        public virtual Perfiles Perfiles { get; set; }
+        public virtual Usuarios Usuarios { get; set; }
     }
 }
