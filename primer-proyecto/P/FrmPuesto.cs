@@ -72,7 +72,7 @@ namespace P
                 e.titulo = this.cboTitulo.Text.Trim();
 
                 Logica.Agregar_Puesto(e);
-                MessageBox.Show("Puesto agregado");
+                MessageBox.Show("Puesto agregado con éxito");
                 Limpiar();
                 CargarLista();
             }
