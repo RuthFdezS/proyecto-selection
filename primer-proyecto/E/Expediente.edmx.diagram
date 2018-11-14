@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5d0821639395451db3ea5a8d2ffa90fb" Name="Diagram1">
+        <EntityTypeShape EntityType="Expediente.Expediente" Width="1.5" PointX="2.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Expediente.Perfiles" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Expediente.Puesto" Width="1.5" PointX="2.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Expediente.PuestoPorExpediente" Width="1.5" PointX="5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Expediente.Usuarios" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Expediente.UsuariosPorPerfiles" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="Expediente.FK_PuestoPorExpediente_Expediente" ManuallyRouted="false" />
+        <AssociationConnector Association="Expediente.FK_UsuariosPorPerfiles_Perfiles" ManuallyRouted="false" />
+        <AssociationConnector Association="Expediente.FK_PuestoPorExpediente_Puesto" ManuallyRouted="false" />
+        <AssociationConnector Association="Expediente.FK_UsuariosPorPerfiles_Usuarios" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
